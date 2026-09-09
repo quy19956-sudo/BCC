@@ -1,0 +1,17 @@
+{
+  "source": "Long Chau 4.6.2 XAPK supplied by the user",
+  "publicOnly": true,
+  "storeFrontBase": "https://api.nhathuoclongchau.com.vn/lccus/ecom-prod/store-front/v2/",
+  "searchServiceBase": "https://api.nhathuoclongchau.com.vn/lccus/search-product-service/",
+  "publicSite": "https://nhathuoclongchau.com.vn/",
+  "routes": [
+    "api/products/ecom/product/search",
+    "api/products/ecom/product/search/list",
+    "api/products/ecom/product/search/fast/suggest",
+    "api/products/ecom/product/suggest-product",
+    "api/products/ecom/product/suggest-keyword",
+    "api/products/ecom/product/short-details",
+    "api/products/ecom/product/v2/detail/"
+  ],
+  "note": "No access token, API key, encryption key, user identifier or private endpoint is included."
+}

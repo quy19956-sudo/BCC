@@ -1,0 +1,277 @@
+<!doctype html><html lang="vi"><head>
+<meta name="author" content="Trương Minh Quý"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Dữ liệu và kiểm tra thủ thuật</title>
+<style>
+:root{--navy:#0b3a67;--blue:#0879a8;--red:#c51f2d;--gold:#f4c542;--ink:#183746;--muted:#617985;--line:#cfdde4;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#e5f5fc}*{box-sizing:border-box}html,body{margin:0;max-width:100%;overflow-x:hidden}body{padding:10px 8px calc(28px + env(safe-area-inset-bottom));background:linear-gradient(#dff4ff,#f3fbfe)}button,input,select{font:inherit}.wrap{max-width:1100px;margin:auto}.hero{background:linear-gradient(135deg,#072a4d,#0879a8 68%,#c51f2d);color:#fff;border:2px solid var(--gold);border-radius:18px;padding:15px;box-shadow:0 8px 24px #123c4e2e}.hero h1{font-size:20px;margin:0 0 5px}.buildMark{display:inline-block;margin-top:8px;padding:5px 9px;border-radius:999px;background:#fff;color:#9d1520;border:2px solid #f4c542;font-weight:900;font-size:12px}.hero p{font-size:13px;line-height:1.45;margin:0;opacity:.93}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:sticky;top:0;z-index:8;padding:9px 0;background:#e5f5fcdd;backdrop-filter:blur(7px)}.tab{border:1px solid #9db9c6;border-radius:12px;padding:12px 8px;font-weight:850;background:#fff;color:var(--navy)}.tab.active{background:linear-gradient(135deg,var(--red),#a91723);color:#fff;border:2px solid var(--gold)}.panel{background:#fffdf7;border:1.5px solid #d8c275;border-radius:16px;padding:13px;margin-bottom:11px;box-shadow:0 4px 15px #173c4f12}.panel h2{font-size:17px;color:var(--navy);margin:0 0 8px}.panel p{font-size:13px;color:var(--muted);line-height:1.45;margin:0 0 10px}.files{display:grid;grid-template-columns:1fr 1fr;gap:10px}.file{display:block;border:1px dashed #8eacba;background:#fff;border-radius:13px;padding:11px}.file b{display:block;margin-bottom:7px}.file input{width:100%;font-size:16px}.saved{margin-top:8px;padding:8px;border-radius:9px;background:#e9f8ef;color:#17613a;font-size:12px;line-height:1.4;overflow-wrap:anywhere}.saved.missing{background:#fff0ee;color:#983127}.status{margin-top:10px;padding:10px;border-radius:11px;background:#edf5f8;color:#496775;font-size:13px;line-height:1.4}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:0;border-radius:11px;padding:11px 13px;font-weight:850;min-height:46px}.primary{background:linear-gradient(135deg,var(--red),#a91723);color:#fff;border:2px solid var(--gold)}.secondary{background:#e2f3f9;color:var(--navy);border:1px solid #9bc6d7}.danger{background:#fff0ee;color:#982b22;border:1px solid #e4aaa4}.tableCard{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:11px;overflow:hidden}.tableHead{padding:11px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#eef7fa}.tableHead b{color:var(--navy)}.badge{font-size:12px;background:#fff;border:1px solid #bfd4dd;border-radius:999px;padding:5px 8px;white-space:nowrap}.search{width:calc(100% - 20px);margin:0 10px 10px;border:1px solid #a9bec8;border-radius:10px;padding:10px;font-size:16px}.tableScroll{overflow-y:auto;overflow-x:hidden;max-height:58vh;border-top:1px solid #dbe7ec}table{border-collapse:separate;border-spacing:0;width:100%;table-layout:fixed;font-size:12px}th,td{padding:8px;border-right:1px solid #e0e8ec;border-bottom:1px solid #e0e8ec;text-align:left;vertical-align:top;overflow-wrap:anywhere;word-break:break-word}th{position:sticky;top:0;background:#0b3a67;color:#fff;z-index:2;white-space:normal}#staffTableCard th:nth-child(1){width:7%}#staffTableCard th:nth-child(2){width:16%}#staffTableCard th:nth-child(3){width:39%}#staffTableCard th:nth-child(4){width:38%}#ruleTableCard th:nth-child(1){width:6%}#ruleTableCard th:nth-child(2){width:12%}#ruleTableCard th:nth-child(3){width:34%}#ruleTableCard th:nth-child(4){width:16%}#ruleTableCard th:nth-child(5){width:10%}#ruleTableCard th:nth-child(6){width:22%}.timeCell{font-weight:850;color:#9d251d}.focusRow td{background:#fff2a8!important}.tableEmpty{text-align:center;padding:24px;color:#72858e}.probe{margin:0 10px 10px;padding:10px;border-radius:10px;font-size:13px;line-height:1.45}.probe.ok{background:#fff8cf;color:#694d00;border:1px solid #e4c95a}.probe.bad{background:#fff0ee;color:#922b23}.sourceGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.source{border-radius:11px;padding:10px;display:flex;flex-direction:column;gap:4px;font-size:12px}.source b{font-size:13px}.source.ok{background:#e9f8ef;color:#17613a}.source.bad{background:#fff0ee;color:#982e25}.summary{display:none;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}.stat{background:#fff;border:1px solid #cfdee5;border-radius:13px;padding:11px;text-align:center}.stat strong{display:block;font-size:22px;color:#0d6283}.stat span{font-size:12px;color:#6d828d}.toolbar{display:none;align-items:center;gap:10px;justify-content:space-between;margin-bottom:9px}.toolbar select{height:46px;border:1px solid #acc0ca;border-radius:10px;background:#fff;padding:0 10px}.results{display:none}.issue{background:#fff;border:1px solid #d4e0e5;border-left:6px solid #c62828;border-radius:12px;padding:12px;margin-bottom:8px}.issue.warn{border-left-color:#d77a00}.issue h3{font-size:15px;margin:0 0 7px;color:#284d5f}.meta{font-size:12px;color:#71848e;margin-bottom:7px}.detail{font-size:14px;line-height:1.45}.suggest{font-size:13px;color:#3e6879;margin-top:7px;padding-top:7px;border-top:1px solid #e0e9ed}.empty{text-align:center;background:#e8f5e9;border:1px solid #a7d3aa;color:#276b2b;border-radius:14px;padding:24px;font-weight:800}.progress{height:5px;background:#dfeaec;border-radius:5px;overflow:hidden;display:none;margin-top:10px}.progress:after{content:"";display:block;width:36%;height:100%;background:var(--red);animation:run 1s linear infinite}@keyframes run{from{transform:translateX(-120%)}to{transform:translateX(300%)}}.foot{font-size:11px;color:#647b87;text-align:center;margin:14px 0}[hidden]{display:none!important}@media(max-width:750px){.files,.sourceGrid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.summary .stat:last-child{grid-column:1/-1}.toolbar{align-items:stretch;flex-direction:column}.toolbar select,.toolbar button{width:100%}.actions{display:grid;grid-template-columns:1fr 1fr}.tableCard{overflow:visible}.tableScroll{overflow:visible;max-height:none;border-top:1px solid #dbe7ec;padding:8px;background:#f2f8fb}table,tbody{display:block;width:100%;min-width:0}thead{display:none}tbody tr{display:block;width:100%;margin:0 0 9px;padding:7px 10px;background:#fff;border:1px solid #cbdce4;border-radius:12px;box-shadow:0 2px 7px #173c4f12}tbody tr:last-child{margin-bottom:0}tbody td{display:grid;grid-template-columns:92px minmax(0,1fr);gap:9px;width:100%;padding:6px 0;border:0!important;line-height:1.38;overflow-wrap:anywhere;word-break:break-word}tbody td::before{content:attr(data-label);font-weight:850;color:var(--navy)}tbody td[data-label="STT"]{display:none}.timeCell{font-size:14px}.focusRow td{background:transparent!important}.tableEmpty{display:block!important;padding:20px 8px!important;text-align:center}.tableEmpty::before{content:none!important}.tableHead{align-items:flex-start}.tableHead b{line-height:1.25}.search{margin-top:1px}}@media(max-width:420px){body{padding-left:5px;padding-right:5px}.panel{padding:11px}.tableHead{padding:10px}.actions{grid-template-columns:1fr}.tabs{gap:5px}.tab{padding:11px 5px;font-size:13px}tbody td{grid-template-columns:82px minmax(0,1fr);font-size:13px}}
+</style><link rel="stylesheet" href="mobile-theme.css"><link rel="stylesheet" href="desktop-theme.css?v=20260909-desktop1"><script src="desktop-theme.js?v=20260909-desktop1" defer></script><link rel="stylesheet" href="win98-theme.css">
+</head><body><div class="wrap">
+<section class="hero"><h1>☠️ DỮ LIỆU & KIỂM TRA THỦ THUẬT</h1><p>Hai trang tách riêng: trang dữ liệu để nạp và xem đúng từng dòng; trang làm việc chỉ dùng hai bảng đã xác nhận.</p><span class="buildMark">BẢN 3.7.8 — MÃ 378</span></section>
+<nav class="tabs"><button id="tabData" class="tab">1. DỮ LIỆU NỀN</button><button id="tabWork" class="tab">2. TRANG LÀM VIỆC</button></nav>
+<main id="dataView">
+<section class="panel"><h2>Nạp tệp Excel và thay thế dữ liệu cũ</h2><p>Mỗi lần chọn tệp Excel, ứng dụng đọc lại từ bộ nhớ máy và chỉ thay bảng cũ sau khi kiểm tra thành công. Có thể chọn lại cùng một tên tệp nhiều lần; nếu tệp mới lỗi, dữ liệu đang dùng vẫn được giữ nguyên.</p><div class="files">
+<label class="file"><b>Danh sách nhân viên</b><input id="staffFile" type="file" accept=".xlsx,.xls,.xlsm"><div id="staffSaved" class="saved missing">Chưa có dữ liệu.</div></label>
+<label class="file"><b>Danh mục thủ thuật</b><input id="rulesFile" type="file" accept=".xlsx,.xls,.xlsm"><div id="rulesSaved" class="saved missing">Chưa có dữ liệu.</div></label>
+</div><div class="actions"><button id="clearStaffBtn" class="btn danger">Xóa riêng bảng nhân viên</button><button id="clearRulesBtn" class="btn danger">Xóa riêng bảng danh mục</button><button id="tabWorkQuick" class="btn primary" onclick="showView('work')">Sang trang làm việc</button></div><div id="dataStatus" class="status">Sau khi chọn tệp, kiểm tra trực tiếp toàn bộ bảng bên dưới. Ô tìm kiếm luôn để trống sau khi nạp và có thể chọn lại cùng tệp nhiều lần.</div></section>
+<section id="staffTableCard" class="tableCard"><div class="tableHead"><b>BẢNG DANH SÁCH NHÂN VIÊN</b><span id="staffCount" class="badge">0 dòng</span></div><input id="staffSearch" class="search" placeholder="Tìm mã hoặc họ tên nhân viên"><div class="tableScroll"><table><thead><tr><th>STT</th><th>Mã NV</th><th>Họ tên</th><th>Chức danh</th></tr></thead><tbody id="staffBody"></tbody></table></div></section>
+<section id="ruleTableCard" class="tableCard"><div class="tableHead"><b>BẢNG DANH MỤC THỦ THUẬT</b><span id="ruleCount" class="badge">0 dòng</span></div><input id="ruleSearch" class="search" placeholder="Tìm mã, tên hoặc thời gian"><div id="ruleProbe" class="probe ok" hidden></div><div class="tableScroll"><table><thead><tr><th>STT</th><th>Mã PT</th><th>Tên thủ thuật</th><th>THỜI GIAN</th><th>Số người</th><th>Vị trí bắt buộc</th></tr></thead><tbody id="rulesBody"></tbody></table></div></section>
+</main>
+<main id="workView" hidden>
+<section class="panel"><h2>Trang làm việc kiểm tra</h2><div id="workSources" class="sourceGrid"></div><button id="goDataBtn" class="btn secondary">Xem / đổi hai bảng dữ liệu</button><hr style="border:0;border-top:1px solid #d9e5ea;margin:12px 0"><label class="file"><b>Tệp dữ liệu cần kiểm tra</b><input id="dataFile" type="file" accept=".xlsx,.xls,.xlsm"><small>Tệp này không được lưu; chọn mới cho mỗi lần làm việc.</small></label><div class="actions"><button id="checkBtn" class="btn primary">Kiểm tra ngay</button><button id="clearBtn" class="btn secondary">Xóa kết quả</button></div><div id="progress" class="progress"></div><div id="workStatus" class="status">Sẵn sàng. Quy tắc nhân viên giống bản PC: chỉ xác nhận khi đúng đồng thời Mã NV và Họ tên. Quy tắc giờ: nếu một trong hai thủ thuật là “Không ấn định”, chỉ báo trùng khi có mốc bắt đầu/kết thúc trùng nhau.</div></section>
+<section id="summary" class="summary"><div class="stat"><strong id="sRows">0</strong><span>Dòng dữ liệu</span></div><div class="stat"><strong id="sErrors">0</strong><span>Lỗi</span></div><div class="stat"><strong id="sWarnings">0</strong><span>Cảnh báo</span></div><div class="stat"><strong id="sStaff">0</strong><span>Nhân viên</span></div><div class="stat"><strong id="sRules">0</strong><span>Quy tắc</span></div></section>
+<section id="toolbar" class="toolbar"><select id="filter"><option value="all">Tất cả kết quả</option><option value="Lỗi">Chỉ lỗi</option><option value="Cảnh báo">Chỉ cảnh báo</option></select><button id="csvBtn" class="btn secondary">Xuất CSV kết quả</button></section><section id="results" class="results"></section>
+</main><div class="foot">V11 • Quy tắc trùng giờ: Không ấn định chỉ so mốc giờ • Mã 376</div></div>
+<script src="xlsx.full.min.js"></script><script src="heart-data.js"></script><script>
+'use strict';
+const $=id=>document.getElementById(id);
+const DATA_SCHEMA=4,STAFF_STORE='heart_staff_saved_v4',RULES_STORE='heart_rules_saved_v4';
+const LEGACY_STORES=['heart_staff_saved_v1','heart_staff_saved_v2','heart_staff_saved_v3','heart_rules_saved_v1','heart_rules_saved_v2','heart_rules_saved_v3'];
+function postHistory(entry){try{parent.postMessage({type:'BCCT_HISTORY_ADD',entry},'*')}catch(e){}}
+function loadSaved(key){try{const x=JSON.parse(localStorage.getItem(key)||'null');return x&&Array.isArray(x.items)?x:null}catch(e){return null}}
+function saveVerified(key,data){localStorage.setItem(key,JSON.stringify(data));const check=loadSaved(key);if(!check||check.items.length!==data.items.length)throw Error('Không xác nhận được dữ liệu vừa lưu. Vui lòng chọn lại tệp.');return check}
+function currentRulesData(){return loadSaved(RULES_STORE)}
+function fmtSaved(x,unit){return x?`${x.name} • ${x.items.length} ${unit} • ${new Date(x.savedAt).toLocaleString('vi-VN')}`:''}
+function updateSavedInfo(){
+ const st=loadSaved(STAFF_STORE),ru=currentRulesData(),a=$('staffSaved'),b=$('rulesSaved');
+ a.className='saved '+(st?'':'missing');a.textContent=st?'ĐANG DÙNG: '+fmtSaved(st,'nhân viên'):'CHƯA CÓ danh sách nhân viên. Hãy chọn tệp Excel.';
+ b.className='saved '+(ru?'':'missing');b.textContent=ru?'ĐANG DÙNG: '+fmtSaved(ru,'thủ thuật'):'CHƯA CÓ danh mục thủ thuật. Hãy chọn tệp Excel.';
+ const ws=$('workSources');if(ws)ws.innerHTML=`<div class="source ${st?'ok':'bad'}"><b>Danh sách nhân viên</b><span>${st?esc(fmtSaved(st,'nhân viên')):'Chưa nạp tệp'}</span></div><div class="source ${ru?'ok':'bad'}"><b>Danh mục thủ thuật</b><span>${ru?esc(fmtSaved(ru,'thủ thuật')):'Chưa nạp tệp'}</span></div>`;
+ renderDataTables();
+}
+const ROLE_DEFS=[
+{field:'HOTEN1',label:'PT-TT chính',aliases:['HOTEN1','HT1','PT-TT CHÍNH','PTTT CHÍNH'],codes:['MANV1','MAHT1','MABS1','MA PTTT CHINH']},
+{field:'HOTEN2',label:'BS-ĐD phụ 1',aliases:['HOTEN2','HT2','BS-ĐD PHỤ 1','BS DD PHU 1'],codes:['MANV2','MAHT2','MABS2','MA PHU 1']},
+{field:'HOTEN22',label:'BS-ĐD phụ 2',aliases:['HOTEN22','HT3','BS-ĐD PHỤ 2','BS DD PHU 2'],codes:['MANV3','MAHT3','MABS3','MA PHU 2']},
+{field:'HOTEN3',label:'BS-ĐD phụ 3',aliases:['HOTEN3','HT4','BS-ĐD PHỤ 3','BS DD PHU 3'],codes:['MANV4','MAHT4','MABS4','MA PHU 3']},
+{field:'HOTEN4',label:'GM chính',aliases:['HOTEN4','HT5','GM CHÍNH'],codes:['MANV5','MAHT5','MAGM1','MA GM CHINH']},
+{field:'HT6',label:'GM phụ',aliases:['HT6','GM PHỤ'],codes:['MANV6','MAHT6','MAGM2','MA GM PHU']},
+{field:'HOTEN5',label:'Dụng cụ phụ',aliases:['HOTEN5','HT7','DỤNG CỤ PHỤ','DCU PHU'],codes:['MANV7','MAHT7','MA HOTEN5','MA DCU PHU']},
+{field:'HOTEN6',label:'Giúp việc',aliases:['HOTEN6','HT8','GIÚP VIỆC'],codes:['MANV8','MAHT8','MA HOTEN6','MA GIUP VIEC']}
+];
+function clean(v){if(v==null)return'';if(v instanceof Date)return `${String(v.getDate()).padStart(2,'0')}/${String(v.getMonth()+1).padStart(2,'0')}/${v.getFullYear()} ${String(v.getHours()).padStart(2,'0')}:${String(v.getMinutes()).padStart(2,'0')}`;return String(v).replace(/[\r\n\u00a0]+/g,' ').replace(/\s+/g,' ').trim()}
+function strip(s){return clean(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D')}
+function norm(s){return strip(s).toUpperCase().replace(/[^A-Z0-9]+/g,' ').replace(/\s+/g,' ').trim()}
+function hkey(s){return norm(s).replace(/ /g,'')}
+function normCode(s){return clean(s).toUpperCase().replace(/^[\'’‘`´]+/,'').replace(/\.0$/,'').replace(/\s+/g,'')}
+function strictName(s){return clean(s).toUpperCase().replace(/[^A-ZÀ-ỸĐ\s]+/g,' ').replace(/\b(BS|DD|ĐD|CN|KS|THS|TS|CKI|CKII|BSCKI|BSCKII)\b/g,' ').replace(/\s+/g,' ').trim()}
+function makeKey(code,name){return normCode(code)+'|'+strictName(name)}
+function parsePerson(raw,rawCode=''){let text=clean(raw).replace(/^[\'’‘`´]+/,'');let code='',name='';let m=text.match(/^\s*(\d{2,12})\s+(.+?)\s*$/);if(m){code=normCode(m[1]);name=clean(m[2])}else{m=text.match(/^\s*([A-Za-z0-9][A-Za-z0-9._\/-]{1,60}\d[A-Za-z0-9._\/-]*)\s+(.+?)\s*$/);if(m&&/\d/.test(m[1])&&(/[._\/-]/.test(m[1])||/^\d+$/.test(m[1])||m[1].length>=4)){code=normCode(m[1]);name=clean(m[2])}else name=text}if(!code)code=normCode(rawCode);return{raw:clean(raw),code,name:clean(name),key:makeKey(code,name)}}
+function headerMap(row){const m=new Map;row.forEach((v,i)=>{const k=hkey(v);if(k&&!m.has(k))m.set(k,i)});return m}
+function findCol(map,aliases,exact=false){for(const a of aliases){const k=hkey(a);if(map.has(k))return map.get(k)}if(exact)return null;const entries=[...map.entries()];for(const a of aliases){const k=hkey(a);for(const [x,i] of entries)if(x.includes(k)||k.includes(x))return i}return null}
+function cell(row,i){return i==null?'':clean(row[i])}
+function findWorking(sheets){
+ const patientNames=['HOTEN','HOVATEN','TENBENHNHAN','HOTENBENHNHAN','TENBN','HOTENBN','HOVATENBN','TENNGUOIBENH','HOTENNGUOIBENH','NGUOIBENH','BENHNHAN','TENNB','HOTENNB','TEN NGUOI BENH'];
+ const patientCodes=['MABN','MABENHNHAN','SOBENHAN','MAQL','MANGUOIBENH','MANB','MA BN','MA NB','SOHSBA','SOVAOVIEN'];
+ const procNames=['TENPT','TENPTDM','TENPTT','TENTHUTHUAT','TENPHAUTHUAT','TENKYTHUAT','TENDICHVU','TENDVKT','TENDV'];
+ for(const sh of sheets){for(let r=0;r<Math.min(100,sh.rows.length);r++){
+  const m=headerMap(sh.rows[r]),roleCols={},codeCols={};
+  for(const d of ROLE_DEFS){const x=findCol(m,d.aliases);if(x!=null)roleCols[d.field]=x;const c=findCol(m,d.codes);if(c!=null)codeCols[d.field]=c}
+  const pName=findCol(m,procNames),pCode=findCol(m,['MAPT','MAPHAUTHUAT','MATHUTHUAT','MADVKT','MADICHVU','MAKYTHUAT']),patientName=findCol(m,patientNames),patientCode=findCol(m,patientCodes);
+  if(Object.keys(roleCols).length&&(pName!=null||pCode!=null))return{sheet:sh,headerRow:r,roleCols,codeCols,patientCode,patientName,patientLast:findCol(m,['HO','HOBENHNHAN','HONB'],true),patientFirst:findCol(m,['TEN','TENBENHNHAN','TENNB'],true),procedureCode:pCode,procedureName:pName,procedureName2:findCol(m,['TENPTDM','TENPTT','TENGIAVP','TENDVKT','TENDICHVU']),department:findCol(m,['TENPMO','TENKHOATHUCHIEN','KHOATHUCHIEN','PHONGMO','KHOAPHONGTHUCHIEN','KHOA','TENKHOA']),start:findCol(m,['NGAY','NGAYTHUCHIEN','NGAYBATDAU','BATDAU','GIOBD','NGAYGIOBD','THOIGIANBD','TUBATDAU']),end:findCol(m,['NGAYKT','NGAYKETTHUC','GIOKT','KETTHUC','THOIGIANKT','NGAYGIOKT','DENKETTHUC']),headers:sh.rows[r].map(clean)}
+ }}return null
+}
+function parseDate(v){if(v instanceof Date&&!isNaN(v))return new Date(v);if(typeof v==='number'&&v>1&&v<100000){const ms=(v-25569)*86400000;return new Date(ms)}const s=clean(v);if(!s)return null;if(/^\d+(\.\d+)?$/.test(s)){const n=Number(s);if(n>1&&n<100000)return new Date((n-25569)*86400000)}let m=s.replace('T',' ').match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);if(m)return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0));m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);if(m)return new Date(+m[1],+m[2]-1,+m[3],+(m[4]||0),+(m[5]||0),+(m[6]||0));const d=new Date(s);return isNaN(d)?null:d}
+function durationMinutes(a,b){if(!a||!b)return null;let d=(b-a)/60000;if(d<0&&Math.abs(d)<=1440)d+=1440;return d<0?null:Math.round(d*100)/100}
+function isTargetDept(s){const n=norm(s);return n==='KHOA NOI TIM MACH'||n==='PHONG DSA'}
+function minMinutes(rule){const n=norm(rule);if(!n)return null;if(['KHONG AN DINH','KHONG KIEM TRA TRUNG GIO','KHONG CHECK TRUNG GIO','BO QUA TRUNG GIO','MIEN KIEM TRA TRUNG GIO'].some(x=>n.includes(x)))return null;let m=n.match(/(\d+)\s*(PHUT|TIENG|GIO)/);if(m)return Number(m[1])*(m[2]==='PHUT'?1:60);m=n.match(/(?:TREN|TOI THIEU|IT NHAT|MIN)?\s*(\d+)\b/);return m?Number(m[1]):null}
+function skipOverlap(rule){const n=norm(rule);return ['KHONG KIEM TRA TRUNG GIO','KHONG CHECK TRUNG GIO','BO QUA TRUNG GIO','MIEN KIEM TRA TRUNG GIO'].some(x=>n.includes(x))}
+function isIndefiniteTime(rule){return norm(rule).includes('KHONG AN DINH')}
+function staffTimesConflict(a,b){if(a.rec.indefiniteTime||b.rec.indefiniteTime)return +a.start===+b.start||+a.end===+b.end||+a.start===+b.end||+a.end===+b.start;return a.start<b.end&&b.start<a.end}
+function lev(a,b){const x=[...a],y=[...b],p=Array(y.length+1).fill(0).map((_,i)=>i);for(let i=1;i<=x.length;i++){let q=[i];for(let j=1;j<=y.length;j++)q[j]=Math.min(q[j-1]+1,p[j]+1,p[j-1]+(x[i-1]===y[j-1]?0:1));for(let j=0;j<q.length;j++)p[j]=q[j]}return p[y.length]}
+function similarity(a,b){return 1-lev(a,b)/Math.max(a.length,b.length,1)}
+const GOOD_FILE_BYTES=new Map();
+function fileKey(file){return [file&&file.name||'',file&&file.size||0,file&&file.lastModified||0,file&&file.type||''].join('|')}
+function cloneBytes(bytes){const out=new Uint8Array(bytes.byteLength);out.set(bytes);return out}
+function fileReaderArrayBuffer(file){return new Promise((resolve,reject)=>{try{const r=new FileReader();r.onload=()=>r.result?resolve(r.result):reject(Error('Không nhận được dữ liệu từ trình chọn tệp.'));r.onerror=()=>reject(r.error||Error('Không đọc được tệp từ bộ nhớ máy.'));r.onabort=()=>reject(Error('Đã hủy đọc tệp.'));r.readAsArrayBuffer(file)}catch(e){reject(e)}})}
+async function readFileBytes(file){if(!file)throw Error('Chưa chọn tệp.');let firstErr=null;try{const ab=await fileReaderArrayBuffer(file),bytes=new Uint8Array(ab);if(bytes.byteLength<8)throw Error('Tệp rỗng hoặc không đọc đủ dữ liệu.');return bytes}catch(e){firstErr=e}try{if(typeof file.arrayBuffer==='function'){const ab=await file.arrayBuffer(),bytes=new Uint8Array(ab);if(bytes.byteLength<8)throw Error('Tệp rỗng hoặc không đọc đủ dữ liệu.');return bytes}}catch(e){if(!firstErr)firstErr=e}const cached=GOOD_FILE_BYTES.get(fileKey(file));if(cached)return cloneBytes(cached);throw Error((firstErr&&firstErr.message)||'Không đọc được tệp từ bộ nhớ máy.')}
+function manualSheetRows(ws){const ref=ws&&ws['!ref'];if(!ref)return[];const rg=XLSX.utils.decode_range(ref),rows=[];let last=-1;const endRow=Math.min(rg.e.r,rg.s.r+200000),endCol=Math.min(rg.e.c,rg.s.c+100);for(let r=rg.s.r;r<=endRow;r++){const row=[];let any=false;for(let c=rg.s.c;c<=endCol;c++){const x=ws[XLSX.utils.encode_cell({r,c})],v=x&&x.v!=null?x.v:'';if(v!==''&&v!=null)any=true;row.push(v)}rows.push(row);if(any)last=rows.length}return last<0?[]:rows.slice(0,last)}
+function bytesToBinary(bytes){let out='';const step=32768;for(let i=0;i<bytes.length;i+=step){const part=bytes.subarray(i,Math.min(bytes.length,i+step));out+=String.fromCharCode.apply(null,part)}return out}
+function openWorkbook(bytes,mode='array'){if(mode==='binary')return XLSX.read(bytesToBinary(bytes),{type:'binary',cellDates:true,dense:false});return XLSX.read(cloneBytes(bytes),{type:'array',cellDates:true,dense:false})}
+function workbookSheets(bytes,manual=false,mode='array'){const wb=openWorkbook(bytes,mode);if(!wb||!Array.isArray(wb.SheetNames)||!wb.SheetNames.length)throw Error('Tệp Excel không có trang tính.');return wb.SheetNames.map(name=>({name,rows:manual?manualSheetRows(wb.Sheets[name]):XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,raw:true,defval:'',blankrows:false})}))}
+
+function utf8Text(data){
+ if(data==null)return'';
+ const bytes=data instanceof Uint8Array?data:new Uint8Array(data.buffer||data,data.byteOffset||0,data.byteLength||data.length||0);
+ if(typeof TextDecoder!=='undefined'){try{return new TextDecoder('utf-8').decode(bytes)}catch(e){}}
+ let bin='',step=32768;for(let i=0;i<bytes.length;i+=step)bin+=String.fromCharCode.apply(null,bytes.subarray(i,Math.min(bytes.length,i+step)));
+ try{return decodeURIComponent(escape(bin))}catch(e){return bin}
+}
+function xmlDecode(s){return String(s||'').replace(/&#x([0-9a-f]+);/gi,(_,x)=>String.fromCodePoint(parseInt(x,16))).replace(/&#(\d+);/g,(_,x)=>String.fromCodePoint(parseInt(x,10))).replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&amp;/g,'&')}
+function xmlAttr(src,name){const esc=String(name).replace(':','\\:'),m=String(src||'').match(new RegExp('(?:^|\\s)'+esc+'\\s*=\\s*(["\\\'])([\\s\\S]*?)\\1','i'));return m?xmlDecode(m[2]):''}
+function xmlTextNodes(src){let out='',m;const re=/<t\b[^>]*>([\s\S]*?)<\/t>/gi;while((m=re.exec(src)))out+=xmlDecode(m[1].replace(/<[^>]*>/g,''));return out}
+function colIndex(ref){const m=String(ref||'').match(/^([A-Z]+)\d+$/i);if(!m)return-1;let n=0;for(const ch of m[1].toUpperCase())n=n*26+ch.charCodeAt(0)-64;return n-1}
+function cfbEntryText(cfb,suffix){suffix=String(suffix).replace(/^\/+/, '').toLowerCase();for(let i=0;i<(cfb.FullPaths||[]).length;i++){const p=String(cfb.FullPaths[i]||'').replace(/\\/g,'/').toLowerCase();if(p.endsWith('/'+suffix)||p===suffix){const f=cfb.FileIndex[i];return utf8Text(f&&f.content)}}return''}
+function rawXmlWorkbookSheets(bytes){
+ if(!XLSX.CFB||typeof XLSX.CFB.read!=='function')throw Error('Thiếu bộ giải nén XLSX.');
+ const cfb=XLSX.CFB.read(cloneBytes(bytes),{type:'array'}),wbXml=cfbEntryText(cfb,'xl/workbook.xml'),relsXml=cfbEntryText(cfb,'xl/_rels/workbook.xml.rels');
+ if(!wbXml||!relsXml)throw Error('Không tìm thấy cấu trúc workbook XML.');
+ const rels={},relRe=/<Relationship\b([^>]*)\/?\s*>/gi;let m;while((m=relRe.exec(relsXml))){const id=xmlAttr(m[1],'Id'),target=xmlAttr(m[1],'Target');if(id&&target)rels[id]=target}
+ const defs=[],sheetRe=/<sheet\b([^>]*)\/?\s*>/gi;while((m=sheetRe.exec(wbXml))){const name=xmlAttr(m[1],'name'),rid=xmlAttr(m[1],'r:id');if(name&&rid&&rels[rid])defs.push({name,target:rels[rid]})}
+ if(!defs.length)throw Error('Không tìm thấy trang tính trong workbook XML.');
+ const shared=[],ssXml=cfbEntryText(cfb,'xl/sharedStrings.xml');if(ssXml){const siRe=/<si\b[^>]*>([\s\S]*?)<\/si>/gi;while((m=siRe.exec(ssXml)))shared.push(xmlTextNodes(m[1]))}
+ const sheets=[];
+ for(const def of defs){
+  let target=String(def.target||'').replace(/\\/g,'/').replace(/^\/+/, '');while(target.startsWith('../'))target=target.slice(3);if(!target.startsWith('xl/'))target='xl/'+target;
+  const xml=cfbEntryText(cfb,target);if(!xml){sheets.push({name:def.name,rows:[]});continue}
+  const rows=[],rowRe=/<row\b([^>]*)>([\s\S]*?)<\/row>/gi;let rm,maxData=-1;
+  while((rm=rowRe.exec(xml))){
+   const rn=Math.max(1,parseInt(xmlAttr(rm[1],'r')||String(rows.length+1),10)||1),row=[];let any=false,cm;const cellRe=/<c\b([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/gi;
+   while((cm=cellRe.exec(rm[2]))){
+    const attrs=cm[1]||'',body=cm[2]||'',ref=xmlAttr(attrs,'r'),ci=colIndex(ref);if(ci<0||ci>300)continue;const type=xmlAttr(attrs,'t');let val='';
+    if(type==='inlineStr')val=xmlTextNodes(body);else{const vm=body.match(/<v\b[^>]*>([\s\S]*?)<\/v>/i);if(vm){const raw=xmlDecode(vm[1].replace(/<[^>]*>/g,''));if(type==='s'){const si=parseInt(raw,10);val=Number.isFinite(si)&&shared[si]!=null?shared[si]:raw}else if(type==='b')val=raw==='1'?'TRUE':'FALSE';else val=raw}else if(type==='str')val=xmlTextNodes(body)}
+    if(val!==''&&val!=null)any=true;row[ci]=val
+   }
+   while(rows.length<rn-1)rows.push([]);rows[rn-1]=row;if(any)maxData=Math.max(maxData,rn-1)
+  }
+  sheets.push({name:def.name,rows:maxData<0?[]:rows.slice(0,maxData+1).map(r=>r||[])})
+ }
+ return sheets
+}
+
+function workbookCandidates(bytes){const tries=[['array',false],['array',true],['binary',false],['binary',true]],out=[],errors=[];for(const [mode,manual] of tries){try{const sheets=workbookSheets(bytes,manual,mode);out.push({mode,manual,sheets})}catch(e){errors.push(mode+(manual?'-manual':'')+': '+String(e&&e.message||e))}}try{out.push({mode:'xml-raw',manual:false,sheets:rawXmlWorkbookSheets(bytes)})}catch(e){errors.push('xml-raw: '+String(e&&e.message||e))}return{out,errors}}
+async function readWorkbook(file){const bytes=await readFileBytes(file),c=workbookCandidates(bytes);for(const x of c.out)if(x.sheets.some(s=>s.rows&&s.rows.length))return x.sheets;throw Error('Tệp Excel không có dữ liệu. '+c.errors.join(' | '))}
+function defaultStaff(){const src=window.DEFAULT_STAFF&&Array.isArray(DEFAULT_STAFF.items)?DEFAULT_STAFF.items:[];return src.map(x=>({code:normCode(x.code),name:clean(x.name),title:clean(x.title),key:makeKey(x.code,x.name)}))}
+function defaultRules(){return DEFAULT_RULES.items.map(x=>({code:clean(x.mapt),name:clean(x.tenpt),timeRule:clean(x.time_rule),requiredRoles:Object.fromEntries((x.required_roles||[]).map(r=>[r.field,r.label]))}))}
+function parseStaffSheets(sheets){
+ const primaryCodes=['MANV','MA NV','MA NHAN VIEN','MSNV','MA SO NV','MA'];
+ const fallbackCodes=['MA CAN BO','MACB','MA CB','MA CBVC'];
+ const nameAliases=['HO VA TEN','HO TEN','HOTEN','TEN NHAN VIEN','HO TEN NHAN VIEN','TEN'];
+ const titleAliases=['CHUC DANH','CHUC VU'];
+ const exactCol=(m,aliases)=>{for(const a of aliases){const k=hkey(a);if(m.has(k))return m.get(k)}return null};
+ const looksLikeWorkingOrRules=m=>{
+  const keys=[...m.keys()];
+  const hasProc=keys.some(k=>['MAPT','MAPHAUTHUAT','MATHUTHUAT','TENPT','TENPTDM','TENPTT','TENTHUTHUAT','TENPHAUTHUAT'].includes(k));
+  const hasRole=keys.some(k=>/^HOTEN(1|2|22|3|4|5|6)$/.test(k)||k==='HT6');
+  const hasTime=keys.some(k=>['NGAY','NGAYKT','THOIGIAN'].includes(k));
+  return hasProc&&(hasRole||hasTime);
+ };
+ let best=null;
+ for(const sh of sheets)for(let r=0;r<Math.min(120,sh.rows.length);r++){
+  const row=sh.rows[r]||[],m=headerMap(row);if(looksLikeWorkingOrRules(m))continue;
+  const h0=norm(row[0]),h1=norm(row[1]),h2=norm(row[2]);
+  const fixed=['STT','SO TT','TT'].includes(h0)&&['MA','MA NV','MANV','MSNV','MA SO NV','MA NHAN VIEN'].includes(h1)&&((h2.includes('HO')&&h2.includes('TEN'))||['HOTEN','TEN'].includes(h2));
+  const ci=fixed?1:(exactCol(m,primaryCodes)??exactCol(m,fallbackCodes));
+  const ni=fixed?2:exactCol(m,nameAliases),ti=exactCol(m,titleAliases);
+  if(ni==null)continue;
+  const out=[],seen=new Set;
+  for(let i=r+1;i<sh.rows.length;i++){
+   const rawName=cell(sh.rows[i],ni),rawCode=cell(sh.rows[i],ci),person=parsePerson(rawName,rawCode),code=normCode(rawCode||person.code),name=clean(person.name);
+   if(!strictName(name)||['TEN','HO TEN','HO VA TEN','HO VA TEN NHAN VIEN'].includes(norm(name)))continue;
+   const pair=makeKey(code,name);if(seen.has(pair))continue;seen.add(pair);
+   out.push({code,name,title:cell(sh.rows[i],ti),key:pair,row:i+1});
+  }
+  const short=out.filter(x=>/^\d{3,5}$/.test(normCode(x.code))).length;
+  const score=out.length*100+short*50+(fixed?1000000:0);
+  if(out.length&&(!best||score>best.score))best={items:out,score};
+ }
+ return best?best.items:[]
+}
+function parseRuleSheets(sheets){let best=[];for(const sh of sheets){for(let r=0;r<Math.min(200,sh.rows.length);r++){const m=headerMap(sh.rows[r]),ci=findCol(m,['MAPT','MAPHAUTHUAT','MATHUTHUAT']),ni=findCol(m,['TENPT','TENPTDM','TENPTT','TENTHUTHUAT','TENPHAUTHUAT']),ti=findCol(m,['THOIGIAN','THOIGIANTH','THOIGIANTHUCTHIEN','THOILUONG','THOIGIANQUYDINH']);if(ni==null)continue;const roleCols={};for(const d of ROLE_DEFS){const x=findCol(m,d.aliases,true);if(x!=null)roleCols[d.field]=x}const out=[];for(let i=r+1;i<sh.rows.length;i++){const name=cell(sh.rows[i],ni);if(!name||hkey(name)==='TENPT')continue;const req={};for(const d of ROLE_DEFS){const x=roleCols[d.field];if(x!=null&&cell(sh.rows[i],x))req[d.field]=d.label}if(!Object.keys(req).length)continue;out.push({code:cell(sh.rows[i],ci),name,timeRule:cell(sh.rows[i],ti),requiredRoles:req})}if(out.length>best.length)best=out}}return best}
+
+async function saveStaffSelection(file){const bytes=await readFileBytes(file),c=workbookCandidates(bytes);let picked=null,items=[];for(const x of c.out){items=parseStaffSheets(x.sheets);if(items.length){picked=x;break}}if(!picked)throw Error('Không đọc được danh sách nhân viên từ '+file.name+'. Kích thước đã đọc: '+bytes.byteLength+' byte. '+c.errors.join(' | '));const data={schemaVersion:DATA_SCHEMA,source:'upload',name:file.name,fileSize:file.size||bytes.byteLength,fileLastModified:file.lastModified||0,savedAt:new Date().toISOString(),sheetNames:picked.sheets.map(x=>x.name),readMode:picked.mode+(picked.manual?'-manual':''),items};const saved=saveVerified(STAFF_STORE,data);updateSavedInfo();postHistory({tool:'Kiểm tra thủ thuật',title:'Cập nhật danh sách nhân viên',summary:'Đã thay thế dữ liệu cũ bằng '+items.length+' nhân viên từ tệp '+file.name+'.'});return saved}
+async function saveRulesSelection(file){const bytes=await readFileBytes(file),c=workbookCandidates(bytes);let picked=null,items=[];for(const x of c.out){items=parseRuleSheets(x.sheets);if(items.length){picked=x;break}}if(!picked){const info=c.out.map(x=>x.mode+(x.manual?'-manual':'')+': '+x.sheets.map(s=>s.name+' '+(s.rows&&s.rows.length||0)+' dòng').join(', ')).join(' | ');throw Error('Không đọc được danh mục từ '+file.name+'. Đã đọc '+bytes.byteLength+' byte. '+info+'. Tệp cần MAPT, TENPT, THOIGIAN và ít nhất một cột HOTEN có dấu X. Đã thử thêm chế độ XML thô.')}const data={schemaVersion:DATA_SCHEMA,source:'upload',name:file.name,fileSize:file.size||bytes.byteLength,fileLastModified:file.lastModified||0,savedAt:new Date().toISOString(),sheetNames:picked.sheets.map(x=>x.name),readMode:picked.mode+(picked.manual?'-manual':''),items};const saved=saveVerified(RULES_STORE,data);updateSavedInfo();postHistory({tool:'Kiểm tra thủ thuật',title:'Cập nhật danh mục thủ thuật',summary:'Đã thay thế dữ liệu cũ bằng '+items.length+' thủ thuật từ tệp '+file.name+'.'});return saved}
+let importBusy=false;
+function setImportBusy(v){importBusy=!!v;for(const id of ['staffFile','rulesFile']){const el=$(id);if(el)el.disabled=importBusy}}
+function replaceAndBind(id,kind){const current=$(id);if(!current)return;const fresh=current.cloneNode(true);fresh.value='';current.replaceWith(fresh);bindOneFileInput(id,kind)}
+function bindOneFileInput(id,kind){const input=$(id);if(!input)return;const reset=()=>{if(!importBusy)try{input.value=''}catch(e){}};input.addEventListener('click',reset);input.addEventListener('touchstart',reset,{passive:true});input.addEventListener('change',async e=>{const f=e.currentTarget.files&&e.currentTarget.files[0];if(!f||importBusy)return;setImportBusy(true);$('dataStatus').textContent='Bản 3.7.8 đang đọc '+f.name+'…';try{if(kind==='staff'){const x=await saveStaffSelection(f);$('dataStatus').textContent='ĐÃ CẬP NHẬT NHÂN VIÊN: '+x.name+' • '+x.items.length+' dòng • chế độ '+x.readMode+' • '+new Date(x.savedAt).toLocaleString('vi-VN');$('staffSearch').value='';renderDataTables('staff')}else{const x=await saveRulesSelection(f);$('dataStatus').textContent='ĐÃ CẬP NHẬT DANH MỤC: '+x.name+' • '+x.items.length+' dòng • chế độ '+x.readMode+' • '+new Date(x.savedAt).toLocaleString('vi-VN');$('ruleSearch').value='';renderDataTables('rules')}}catch(err){console.error(err);alert('BẢN 3.7.8: '+err.message);$('dataStatus').textContent='KHÔNG CẬP NHẬT. Dữ liệu cũ vẫn giữ nguyên. '+err.message;updateSavedInfo()}finally{setImportBusy(false);replaceAndBind(id,kind)}})}
+bindOneFileInput('staffFile','staff');bindOneFileInput('rulesFile','rules');
+for(const id of ['dataFile']){const input=$(id);if(input){const reset=()=>{try{input.value=''}catch(e){}};input.addEventListener('click',reset);input.addEventListener('touchstart',reset,{passive:true})}}
+function readRecords(sheets){
+ const h=findWorking(sheets);if(!h)throw Error('Không tìm thấy hàng tiêu đề phù hợp. Tệp cần có Mã/Tên thủ thuật và ít nhất một cột ê-kíp. Tên bệnh nhân là cột tùy chọn.');
+ const out=[],sh=h.sheet;
+ for(let i=h.headerRow+1;i<sh.rows.length;i++){const row=sh.rows[i],pname=cell(row,h.procedureName)||cell(row,h.procedureName2),pcode=cell(row,h.procedureCode),splitName=[cell(row,h.patientLast),cell(row,h.patientFirst)].filter(Boolean).join(' '),patient=cell(row,h.patientName)||splitName;let hasRole=false;for(const d of ROLE_DEFS)if(h.roleCols[d.field]!=null&&(cell(row,h.roleCols[d.field])||cell(row,h.codeCols[d.field])))hasRole=true;if(!pname&&!pcode&&!patient&&!hasRole)continue;if(!pname&&!pcode)continue;
+  const rec={sheetName:sh.name,excelRow:i+1,patientCode:cell(row,h.patientCode),patientName:patient,procedureCode:pcode,procedureName:pname||pcode,dept:cell(row,h.department),hasDeptColumn:h.department!=null,startText:cell(row,h.start),endText:cell(row,h.end),start:h.start==null?null:parseDate(row[h.start]),end:h.end==null?null:parseDate(row[h.end]),roles:{}};rec.durationMinutes=durationMinutes(rec.start,rec.end);
+  for(const d of ROLE_DEFS){if(h.roleCols[d.field]==null&&h.codeCols[d.field]==null)continue;const rv=parsePerson(cell(row,h.roleCols[d.field]),cell(row,h.codeCols[d.field]));rec.roles[d.field]={...rv,field:d.field,label:d.label}}
+  out.push(rec)
+ }
+ if(!out.length)throw Error('Đã nhận diện hàng tiêu đề nhưng không có dòng thủ thuật hợp lệ bên dưới.');return out
+}
+function prepareRules(rules){const byCode=new Map,byName=new Map;for(const r of rules){r.ncode=norm(r.code);r.nname=norm(r.name);if(r.ncode)byCode.set(r.ncode,r);if(r.nname)byName.set(r.nname,r)}return{rules,byCode,byName}}
+function findRule(rec,cat){const c=norm(rec.procedureCode);if(c&&cat.byCode.has(c))return cat.byCode.get(c);const n=norm(rec.procedureName);if(!n)return null;if(cat.byName.has(n))return cat.byName.get(n);let best=null,score=.88;for(const r of cat.rules){const s=similarity(n,r.nname);if(s>=score){score=s;best=r}}return best}
+function check(records,staff,rules){
+ const issues=[],staffPairs=new Map;
+ for(const x of staff){const code=normCode(x.code),name=strictName(x.name);if(code&&name)staffPairs.set(makeKey(code,name),{...x,code,name,key:makeKey(code,name)})}
+ const cat=prepareRules(rules),dups=new Map,occ=new Map;
+ const add=(rec,type,level,detail,suggestion,person=null)=>issues.push({type,level,sheet:rec.sheetName,row:rec.excelRow,dept:rec.dept,patientCode:rec.patientCode,procedureCode:rec.procedureCode,procedureName:rec.procedureName,start:rec.startText,end:rec.endText,detail,suggestion,code:person?.code||'',name:person?.name||'',role:person?.label||''});
+ const visibleName=name=>clean(name).replace(/\s*\[[^\]]{1,40}\]\s*$/,'').trim()||clean(name);
+ for(const rec of records){
+  const rule=findRule(rec,cat),target=!rec.hasDeptColumn||isTargetDept(rec.dept),filled=Object.values(rec.roles).filter(x=>x.raw||x.name||x.code),actualKeys=new Set,exactValid=[],invalid=[];
+  for(const rv of filled){
+   const code=normCode(rv.code),name=strictName(visibleName(rv.name)),personKey=(code&&name)?makeKey(code,name):(code||name);
+   if(personKey)actualKeys.add(personKey);
+   const matched=(code&&name)?staffPairs.get(makeKey(code,name)):null;
+   if(matched)exactValid.push({...rv,code,name,matched,key:matched.key,displayName:visibleName(rv.name)});
+   else invalid.push({...rv,code,name,display:rv.raw||[code,rv.name].filter(Boolean).join(' ')});
+  }
+  rec.actualPeople=actualKeys.size;
+
+  if(rec.hasDeptColumn&&!target&&exactValid.length){
+   let staffText=exactValid.slice(0,6).map(x=>`${x.label}: ${x.displayName}${x.code?' ('+x.code+')':''}`).join(', ');
+   if(exactValid.length>6)staffText+=`, ... (+${exactValid.length-6})`;
+   const wrong=rec.dept||'(trống)';
+   add(rec,'Chọn sai khoa thực hiện','Lỗi',`Có nhân viên thuộc danh sách khoa trong ê-kíp nhưng TENPMO đang là: ${wrong}. Nhân viên: ${staffText}.`,`Đang chọn sai khoa: ${wrong}`);
+  }
+
+  if(rec.hasDeptColumn&&target&&invalid.length){
+   let staffText=invalid.slice(0,8).map(x=>`${x.label}: ${x.display}`).join(', ');
+   if(invalid.length>8)staffText+=`, ... (+${invalid.length-8})`;
+   add(rec,'Sai tên nhân viên','Lỗi',`TENPMO là ${rec.dept} nhưng có nhân viên không khớp danh sách nhân viên Nội Tim Mạch/DSA theo cặp Mã NV + Họ tên: ${staffText}.`,'Kiểm tra lại mã NV/họ tên trong các ô HOTEN1/HOTEN2/... hoặc cập nhật danh sách nhân viên Nội Tim Mạch/DSA.');
+  }
+
+  // PC v44: ca thuộc khoa khác dừng tại kiểm tra sai khoa; không chạy danh mục, trùng ca hay trùng giờ.
+  if(!target)continue;
+
+  if(!rule)add(rec,'Thủ thuật chưa có trong danh mục','Lỗi','Không tìm thấy thủ thuật trong danh mục số người/thời gian.','Cập nhật Danh mục hoặc kiểm tra lại Mã PT/Tên thủ thuật.');
+  else{
+   const required=rule.requiredRoles||{},reqFields=Object.keys(required),filledRoles=Object.values(rec.roles).filter(x=>clean(x.name)),missing=reqFields.filter(f=>!rec.roles[f]||!clean(rec.roles[f].name)),extras=filledRoles.filter(x=>!reqFields.includes(x.field));
+   if(missing.length){
+    let missingText=missing.map(f=>required[f]).join(', '),peopleText='';
+    if(actualKeys.size<reqFields.length)peopleText=` Đồng thời có ${actualKeys.size} người khác nhau, danh mục yêu cầu ${reqFields.length} người/vị trí.`;
+    add(rec,'Thiếu người theo danh mục','Lỗi',`Thiếu vị trí bắt buộc: ${missingText}.${peopleText}`,`Danh mục yêu cầu ${reqFields.length} người/vị trí cho thủ thuật này. Bổ sung đủ ê-kíp hoặc cập nhật lại danh mục nếu quy định đã thay đổi.`);
+   }
+   if(reqFields.length&&(extras.length||filledRoles.length>reqFields.length)){
+    let extraText=extras.slice(0,8).map(x=>`${x.label}: ${x.name}`).join(', ');if(extras.length>8)extraText+=`, ... (+${extras.length-8})`;if(!extraText)extraText='Có số vị trí ê-kíp nhập nhiều hơn số vị trí danh mục yêu cầu.';
+    add(rec,'Dư số người theo danh mục','Lỗi',`Đã nhập ${filledRoles.length} vị trí ê-kíp (${actualKeys.size} người khác nhau), danh mục chỉ yêu cầu ${reqFields.length} vị trí. Vị trí dư: ${extraText}.`,'Xóa người/vị trí nhập dư hoặc cập nhật lại danh mục nếu quy định số người đã thay đổi.');
+   }
+   if(actualKeys.size<reqFields.length&&!missing.length)add(rec,'Không đủ số người','Lỗi',`Có ${actualKeys.size} người khác nhau, danh mục yêu cầu ${reqFields.length} người/vị trí.`,'Bổ sung đủ ê-kíp hoặc cập nhật lại danh mục nếu quy định đã thay đổi.');
+   const min=minMinutes(rule.timeRule);if(min!=null){if(rec.durationMinutes==null)add(rec,'Không đọc được thời gian','Cảnh báo',`Không tính được thời lượng để so với quy định: ${rule.timeRule}.`,'Kiểm tra cột Ngày bắt đầu/Ngày kết thúc trong file làm việc.');else if(rec.durationMinutes<min)add(rec,'Thời gian chưa đạt','Lỗi',`Thời lượng ${Number.isInteger(rec.durationMinutes)?rec.durationMinutes:rec.durationMinutes.toFixed(2)} phút, quy định tối thiểu khoảng ${min} phút (${rule.timeRule}).`,'Kiểm tra giờ bắt đầu/kết thúc hoặc quy định thời gian trong danh mục.')}
+   rec.skipOverlap=skipOverlap(rule.timeRule);rec.indefiniteTime=isIndefiniteTime(rule.timeRule);rec.timeRule=rule.timeRule||'';
+  }
+
+  const dk=clean(rec.patientCode)+'|'+norm(rec.procedureName)+'|'+clean(rec.startText);if(rec.patientCode&&rec.procedureName&&rec.startText){if(!dups.has(dk))dups.set(dk,[]);dups.get(dk).push(rec)}
+  if(!rec.skipOverlap&&rec.start&&rec.end&&rec.end>rec.start)for(const rv of exactValid){if(!occ.has(rv.key))occ.set(rv.key,[]);occ.get(rv.key).push({rec,rv,start:rec.start,end:rec.end})}
+ }
+ for(const group of dups.values())if(group.length>1){const refs=group.slice(0,5).map(r=>r.sheetName+'!'+r.excelRow).join(', ');for(const r of group)add(r,'Trùng thủ thuật','Cảnh báo',`Cùng Mã BN + Tên thủ thuật + giờ bắt đầu xuất hiện ${group.length} lần. Dòng liên quan: ${refs}.`,'Kiểm tra có nhập trùng hay không.')}
+ let overlapGroups=0;for(const list of occ.values()){list.sort((a,b)=>a.start-b.start);for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){const a=list[i],b=list[j];if(a.rec===b.rec||!staffTimesConflict(a,b))continue;overlapGroups++;if(overlapGroups>500)break;const display=a.rv.matched?.name||a.rv.displayName||a.rv.name,code=a.rv.matched?.code||a.rv.code,endpointMode=a.rec.indefiniteTime||b.rec.indefiniteTime,mode=endpointMode?'trùng mốc giờ (có thủ thuật Không ấn định)':'chồng chéo thời gian',detail=`Nhóm TG${String(overlapGroups).padStart(3,'0')}: ${display} (${code}) bị ${mode} giữa ${a.rec.sheetName}!${a.rec.excelRow} [${a.rec.startText} - ${a.rec.endText}; ${a.rv.label}] và ${b.rec.sheetName}!${b.rec.excelRow} [${b.rec.startText} - ${b.rec.endText}; ${b.rv.label}].`;add(a.rec,'Trùng thời gian nhân viên','Cảnh báo',detail,'Kiểm tra lại mốc giờ hoặc người thực hiện. Hai ca trong cùng nhóm được tô cùng màu.',a.rv);add(b.rec,'Trùng thời gian nhân viên','Cảnh báo',detail,'Kiểm tra lại mốc giờ hoặc người thực hiện. Hai ca trong cùng nhóm được tô cùng màu.',b.rv)}if(overlapGroups>500)break}
+ return{issues,overlapGroups}
+}
+let lastIssues=[];function render(issues){lastIssues=issues;const f=$('filter').value,arr=f==='all'?issues:issues.filter(x=>x.level===f),box=$('results');box.innerHTML='';if(!issues.length)box.innerHTML='<div class="empty">Không phát hiện lỗi hoặc cảnh báo theo bộ quy tắc hiện tại.</div>';else if(!arr.length)box.innerHTML='<div class="empty">Không có kết quả trong bộ lọc này.</div>';else for(const x of arr){const d=document.createElement('article');d.className='issue'+(x.level==='Cảnh báo'?' warn':'');d.innerHTML=`<h3>${esc(x.level)} • ${esc(x.type)}</h3><div class="meta">${esc(x.sheet)}!${x.row} • BN: ${esc(x.patientCode||'--')} • ${esc(x.procedureCode||'--')} — ${esc(x.procedureName)}</div><div class="detail">${esc(x.detail)}</div><div class="suggest"><b>Gợi ý:</b> ${esc(x.suggestion)}</div>`;box.appendChild(d)}box.style.display='block'}function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('checkBtn').onclick=async()=>{const f=$('dataFile').files[0];if(!f){alert('Vui lòng chọn tệp dữ liệu cần kiểm tra.');return}const savedStaff=loadSaved(STAFF_STORE),savedRules=currentRulesData();if(!savedStaff){alert('Chưa có bảng danh sách nhân viên. Mở trang DỮ LIỆU và chọn tệp Excel.');showView('data');return}if(!savedRules){alert('Chưa có bảng danh mục thủ thuật. Mở trang DỮ LIỆU và chọn tệp Excel danh mục.');showView('data');return}$('checkBtn').disabled=true;$('progress').style.display='block';$('workStatus').textContent='Đang đọc và kiểm tra tệp…';try{const dataSheets=await readWorkbook(f),records=readRecords(dataSheets),staff=savedStaff.items,rules=savedRules.items,out=check(records,staff,rules),errors=out.issues.filter(x=>x.level==='Lỗi').length,warnings=out.issues.length-errors;$('sRows').textContent=records.length;$('sErrors').textContent=errors;$('sWarnings').textContent=warnings;$('sStaff').textContent=staff.length;$('sRules').textContent=rules.length;$('summary').style.display='grid';$('toolbar').style.display='flex';$('filter').value='all';render(out.issues);$('workStatus').textContent=`Đã kiểm tra ${records.length} dòng. Phát hiện ${errors} lỗi và ${warnings} cảnh báo${out.overlapGroups?' ('+out.overlapGroups+' nhóm trùng giờ)':''}.`;postHistory({tool:'Kiểm tra thủ thuật',title:'Kiểm tra tệp '+f.name,summary:`${records.length} dòng • ${errors} lỗi • ${warnings} cảnh báo`,detail:'Danh sách nhân viên: '+savedStaff.name+' ('+staff.length+')\nDanh mục thủ thuật: '+savedRules.name+' ('+rules.length+')',issues:out.issues});$('summary').scrollIntoView({behavior:'smooth'})}catch(e){console.error(e);$('workStatus').textContent='Không thể kiểm tra: '+e.message;postHistory({tool:'Kiểm tra thủ thuật',title:'Lỗi đọc tệp '+f.name,summary:e.message});alert(e.message)}finally{$('checkBtn').disabled=false;$('progress').style.display='none'}};
+$('clearBtn').onclick=()=>{$('dataFile').value='';$('summary').style.display='none';$('toolbar').style.display='none';$('results').style.display='none';$('results').innerHTML='';$('workStatus').textContent='Đã xóa kết quả. Hai bảng dữ liệu nền vẫn được giữ.';lastIssues=[]};
+$('clearStaffBtn').onclick=()=>{if(!confirm('Xóa riêng bảng danh sách nhân viên đang lưu?'))return;localStorage.removeItem(STAFF_STORE);updateSavedInfo();$('dataStatus').textContent='Đã xóa bảng danh sách nhân viên. Danh mục thủ thuật vẫn được giữ.';postHistory({tool:'Kiểm tra thủ thuật',title:'Xóa bảng nhân viên',summary:'Đã xóa riêng danh sách nhân viên.'})};
+$('clearRulesBtn').onclick=()=>{if(!confirm('Xóa riêng bảng danh mục thủ thuật đang lưu?'))return;localStorage.removeItem(RULES_STORE);updateSavedInfo();$('dataStatus').textContent='Đã xóa bảng danh mục thủ thuật. Danh sách nhân viên vẫn được giữ.';postHistory({tool:'Kiểm tra thủ thuật',title:'Xóa bảng danh mục',summary:'Đã xóa riêng danh mục thủ thuật.'})};
+for(const k of LEGACY_STORES)localStorage.removeItem(k);
+$('filter').onchange=()=>render(lastIssues);
+$('csvBtn').onclick=()=>{if(!lastIssues.length)return;const cols=['Mức','Loại','Sheet','Dòng','Khoa','Mã BN','Mã PT','Tên thủ thuật','Bắt đầu','Kết thúc','Chi tiết','Gợi ý'],rows=lastIssues.map(x=>[x.level,x.type,x.sheet,x.row,x.dept,x.patientCode,x.procedureCode,x.procedureName,x.start,x.end,x.detail,x.suggestion]);const csv='\ufeff'+[cols,...rows].map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='ket_qua_kiem_tra_thu_thuat.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+function showView(view){view=view==='work'?'work':'data';$('dataView').hidden=view!=='data';$('workView').hidden=view!=='work';$('tabData').classList.toggle('active',view==='data');$('tabWork').classList.toggle('active',view==='work');try{history.replaceState(null,'','#'+view)}catch(e){}if(view==='data')renderDataTables();else updateSavedInfo();window.scrollTo(0,0)}
+function tableEmpty(cols,msg){return `<tr><td colspan="${cols}" class="tableEmpty">${esc(msg)}</td></tr>`}
+function renderDataTables(focus){
+ const st=loadSaved(STAFF_STORE),ru=currentRulesData(),staffRaw=$('staffSearch')?.value||'',ruleRaw=$('ruleSearch')?.value||'',sq=norm(staffRaw),rq=norm(ruleRaw);
+ const staff=st?st.items.filter(x=>!sq||norm(`${x.code} ${x.name} ${x.title}`).includes(sq)):[];
+ const rules=ru?ru.items.filter(x=>!rq||norm(`${x.code} ${x.name} ${x.timeRule}`).includes(rq)):[];
+ $('staffCount').textContent=st?`${staff.length}/${st.items.length} dòng`:'0 dòng';
+ $('ruleCount').textContent=ru?`${rules.length}/${ru.items.length} dòng`:'0 dòng';
+ $('staffBody').innerHTML=!st?tableEmpty(4,'Chưa có bảng danh sách nhân viên.'):(!staff.length?tableEmpty(4,'Không tìm thấy nhân viên phù hợp.'):staff.slice(0,500).map((x,i)=>`<tr><td data-label="STT">${i+1}</td><td data-label="Mã NV">${esc(x.code)}</td><td data-label="Họ tên">${esc(x.name)}</td><td data-label="Chức danh">${esc(x.title||'(trống)')}</td></tr>`).join(''));
+ $('rulesBody').innerHTML=!ru?tableEmpty(6,'Chưa có bảng danh mục thủ thuật.'):(!rules.length?tableEmpty(6,'Không tìm thấy thủ thuật phù hợp.'):rules.slice(0,500).map((x,i)=>{const roles=Object.values(x.requiredRoles||{});return `<tr><td data-label="STT">${i+1}</td><td data-label="Mã PT"><b>${esc(x.code)}</b></td><td data-label="Tên thủ thuật">${esc(x.name)}</td><td data-label="Thời gian" class="timeCell">${esc(x.timeRule||'(trống)')}</td><td data-label="Số người">${roles.length}</td><td data-label="Vị trí">${esc(roles.join(', ')||'(trống)')}</td></tr>`}).join(''));
+ const probeBox=$('ruleProbe'),exact=ruleRaw.trim()&&ru?ru.items.find(x=>normCode(x.code)===normCode(ruleRaw)):null;
+ if(exact){probeBox.hidden=false;probeBox.className='probe ok';probeBox.innerHTML=`Mã <b>${esc(exact.code)}</b>: <b>${esc(exact.timeRule||'(trống)')}</b> — ${esc(exact.name)}`}else{probeBox.hidden=true;probeBox.innerHTML=''}
+ if(focus==='rules')setTimeout(()=>$('ruleTableCard').scrollIntoView({behavior:'smooth'}),80);if(focus==='staff')setTimeout(()=>$('staffTableCard').scrollIntoView({behavior:'smooth'}),80)
+}
+$('staffSearch').oninput=()=>renderDataTables();$('ruleSearch').oninput=()=>renderDataTables();$('tabData').onclick=()=>showView('data');$('tabWork').onclick=()=>showView('work');$('goDataBtn').onclick=()=>showView('data');
+updateSavedInfo();showView(location.hash==='#work'?'work':'data');
+</script><script>(function(){
+ function snapshot(){const out={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);out[k]=localStorage.getItem(k)}return out}
+ addEventListener('message',function(e){const m=e.data;if(!m||m.type!=='BCCT_SYNC'||!m.requestId)return;try{
+  if(m.action==='import'){localStorage.clear();for(const [k,v] of Object.entries(m.storage||{}))localStorage.setItem(k,String(v))}
+  else if(m.action==='merge'){for(const k of (m.removeKeys||[]))localStorage.removeItem(k);for(const [k,v] of Object.entries(m.storage||{}))localStorage.setItem(k,String(v))}
+  e.source.postMessage({type:'BCCT_SYNC_RESULT',requestId:m.requestId,ok:true,storage:snapshot()},'*')
+ }catch(err){e.source.postMessage({type:'BCCT_SYNC_RESULT',requestId:m.requestId,ok:false,error:String(err&&err.message||err)},'*')}})
+})();</script></body></html>

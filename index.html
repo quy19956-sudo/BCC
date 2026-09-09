@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta content="Trương Minh Quý" name="author"/><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0b3a67" name="theme-color"/><title>Bộ công cụ tổng hợp - Trương Minh Quý</title><link href="manifest.webmanifest" rel="manifest"/><link href="icons/icon-180.png" rel="apple-touch-icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><meta content="#0b6f8f" name="theme-color"/>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#173042;background:#eef5f8}*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden}button,select{font:inherit}.top{height:calc(58px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 12px 0;background:linear-gradient(135deg,#0b5579,#08789a);color:#fff;display:flex;align-items:center;gap:10px;box-shadow:0 2px 10px #00344c55;position:relative;z-index:5}.back{border:0;background:#ffffff1f;color:#fff;border-radius:12px;width:42px;height:42px;font-size:23px;display:none}.title{font-weight:800;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.shell{height:calc(100% - 58px - env(safe-area-inset-top));overflow:auto;padding:18px 15px calc(30px + env(safe-area-inset-bottom))}.hero{background:linear-gradient(145deg,#fff,#e6f5fa);border:1px solid #c8e0e9;border-radius:22px;padding:20px;box-shadow:0 8px 26px #17445b18;margin-bottom:16px}.heroTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.hero h1{font-size:24px;margin:0 0 8px;color:#0c577a}.hero p{margin:0;color:#55707f;line-height:1.45}.ver{white-space:nowrap;background:#0c6689;color:#fff;border-radius:999px;padding:6px 10px;font-weight:800;font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{border:1px solid #cddfe7;background:#fff;border-radius:18px;padding:15px;min-height:150px;text-align:left;box-shadow:0 4px 16px #173c4f12;display:flex;flex-direction:column}.card:active,.action:active{transform:scale(.985)}.ico{font-size:32px;margin-bottom:10px}.card b{font-size:16px;color:#124f6c;line-height:1.25}.card small{color:#68808c;line-height:1.35;margin-top:7px}.card.wide{grid-column:1/-1;min-height:125px}.section{margin-top:16px;background:#fff;border:1px solid #cddfe7;border-radius:20px;padding:16px;box-shadow:0 4px 16px #173c4f12}.section h2{font-size:18px;color:#124f6c;margin:0 0 6px}.section p{font-size:13px;color:#627b88;line-height:1.45;margin:0 0 13px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{border:0;border-radius:14px;padding:13px 10px;font-weight:800}.save{background:#08789a;color:#fff}.restore{background:#e6f4f8;color:#0b607e;border:1px solid #b8dbe7}.historyBtn{width:100%;background:#f0f7fa;color:#0d607f;border:1px solid #bfdae5}.frame{border:0;width:100%;height:100%;display:none;background:#fff}.note{font-size:12px;color:#718692;text-align:center;margin-top:18px}.status{margin-top:10px;padding:10px 12px;border-radius:12px;font-size:13px;line-height:1.4;background:#eff6f8;color:#526f7d}.status.ok{background:#e9f8ef;color:#12673a}.status.err{background:#fff0ee;color:#9b2e24}.modalWrap{position:fixed;inset:0;background:#082a3a99;z-index:20;display:none;align-items:flex-end;justify-content:center;padding:14px}.modal{background:#fff;border-radius:22px 22px 16px 16px;padding:18px;width:min(760px,100%);max-height:90vh;overflow:auto;box-shadow:0 14px 50px #00141f66}.modal h2{margin:0 0 10px;color:#124f6c;font-size:20px}.modalTop{display:flex;justify-content:space-between;gap:10px;align-items:center}.modalBtns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.modalBtns button,.modalBtns select{border:0;border-radius:12px;padding:10px 12px;font-weight:750}.primary{background:#08789a;color:#fff}.secondary{background:#e9f3f6;color:#155b75}.danger{background:#fff0ee;color:#a52d20}.historyList{display:grid;gap:10px}.hist{border:1px solid #d4e2e8;border-radius:14px;padding:12px;background:#fbfdfe}.histHead{display:flex;justify-content:space-between;gap:10px}.hist b{color:#124f6c}.hist time{font-size:11px;color:#72858e;white-space:nowrap}.hist p{margin:6px 0 0;color:#4f6875;font-size:13px;line-height:1.4}.hist details{margin-top:8px}.hist summary{cursor:pointer;color:#0b6485;font-weight:700;font-size:13px}.issue{margin-top:7px;border-left:4px solid #c62828;background:#fff5f4;padding:8px 9px;border-radius:8px;font-size:12px;line-height:1.35}.issue.warn{border-left-color:#d77a00;background:#fff8eb}.empty{padding:24px;text-align:center;color:#6d838e;background:#f4f8fa;border-radius:14px}.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(25px);opacity:0;pointer-events:none;background:#263238;color:#fff;padding:11px 15px;border-radius:12px;z-index:40;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}@media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}.card.wide{grid-column:auto}.shell{max-width:980px;margin:auto}.card{min-height:170px}.modalWrap{align-items:center}.modal{border-radius:22px}}
+</style>
+<style id="one-piece-mobile-theme">
+:root{--sea:#071a46;--ocean:#18b8e8;--violet:#7657e8;--pink:#ff4f9a;--gold:#ffd166;--ink:#10233f}
+html,body{background:radial-gradient(circle at 15% 8%,#8f67e066 0 8%,transparent 25%),radial-gradient(circle at 89% 22%,#25d1ff55 0 7%,transparent 28%),linear-gradient(165deg,#071a46 0%,#0a578b 48%,#86d4ea 100%);max-width:100%;overflow:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-radial-gradient(ellipse at 50% 112%,transparent 0 34px,#ffffff17 35px 37px,transparent 38px 68px)}
+.top{background:linear-gradient(135deg,#071a46cc,#334d9bcc 62%,#8b54e8c7);border-bottom:1px solid #ffffff66;box-shadow:0 8px 26px #02133755;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.back{background:#ffffff24;border:1px solid #ffffff42}.title:before{content:"☠️ ";}.shell{padding:12px 9px calc(24px + env(safe-area-inset-bottom));width:100%;max-width:760px;margin:auto;position:relative}
+.hero{background:linear-gradient(135deg,#091e50e8,#316ea7c9 58%,#7951d5c7);border:1.5px solid #ffffffa6;color:#fff;padding:18px;border-radius:27px;box-shadow:0 16px 36px #02133755,inset 0 1px 0 #ffffff66;position:relative;overflow:hidden;backdrop-filter:blur(18px)}
+.hero:before{content:"GRAND LINE";position:absolute;right:14px;top:12px;font-size:10px;font-weight:950;letter-spacing:2.6px;color:#ffffff99}.hero:after{content:"⚓";position:absolute;right:8px;bottom:-20px;font-size:104px;opacity:.1;transform:rotate(-12deg)}.hero h1{font-size:22px;color:#fff;text-shadow:0 3px 10px #00153666}.hero p{font-size:13px;color:#edf8ff;max-width:88%}.ver{background:linear-gradient(135deg,var(--violet),var(--pink));border:1.5px solid #ffffffaa;padding:6px 9px;box-shadow:0 7px 18px #572ab655}
+.grid{gap:10px}.card{min-height:138px;padding:14px;border:1.5px solid #ffffffc4;background:linear-gradient(145deg,#ffffffdc,#ddecffc2);border-radius:22px;box-shadow:0 12px 28px #031d4b2b,inset 0 1px 0 #fff;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}.card b{font-size:15px;color:var(--sea)}.card small{font-size:12px;color:#556780}.ico{display:grid;place-items:center;width:48px;height:48px;border-radius:17px;font-size:27px;margin-bottom:9px;background:linear-gradient(135deg,#7759e8,#ff5d9e);box-shadow:0 8px 18px #5c3bc044;border:1px solid #ffffffc7}.card:active{transform:scale(.975);border-color:#fff}
+.section{margin-top:12px;padding:15px;border:1.5px solid #ffffffc4;background:linear-gradient(145deg,#ffffffdc,#e2f2ffc2);border-radius:22px;box-shadow:0 12px 28px #031d4b25;backdrop-filter:blur(18px)}.section h2{color:var(--sea)}.action{min-height:49px}.save,.primary{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;border:1.5px solid #ffffffba;box-shadow:0 8px 18px #5c3bc044}.restore,.historyBtn,.secondary{background:#ffffffc2;color:var(--sea);border:1px solid #ffffffdd}.status{overflow-wrap:anywhere;background:#ffffff9e;border:1px solid #ffffffcc}.note{color:#eef9ff;margin-top:13px;text-shadow:0 1px 4px #00183a}.modal{border:1.5px solid #ffffffd0;background:linear-gradient(145deg,#ffffffed,#e7f4ffea);backdrop-filter:blur(22px)}
+.tmq-owner-footer{position:static;margin:14px 0 3px;padding:10px;border-radius:15px;background:linear-gradient(135deg,#071a46ed,#5f45b8e8);border:1px solid #ffffff55;color:#fff;text-align:center;font-size:10.5px;letter-spacing:.2px;box-shadow:0 8px 20px #02133744}.tmq-owner-footer b{color:var(--gold)}.tmq-owner-footer span{opacity:.86}
+@media(max-width:520px){.shell{padding-left:7px;padding-right:7px}.grid{grid-template-columns:1fr;gap:9px}.card,.card.wide{grid-column:auto;min-height:0;padding:12px;display:grid;grid-template-columns:54px minmax(0,1fr);grid-template-rows:auto auto;column-gap:11px;align-items:center}.ico{grid-row:1/3;margin:0;width:48px;height:48px;font-size:26px}.card b{font-size:15px}.card small{font-size:11.5px;margin-top:3px}.heroTop{display:block}.ver{display:inline-block;margin-top:11px}.actions{grid-template-columns:1fr}.tmq-owner-footer span{display:none}}
+@media(min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card.wide{grid-column:1/-1}.card{min-height:145px}.shell{max-width:760px}}
+</style>
+<script>window.addEventListener('error',function(e){try{localStorage.setItem('BCCT_LAST_JS_ERROR',String(e.message||'Lỗi giao diện'));}catch(_){}});window.addEventListener('unhandledrejection',function(e){try{localStorage.setItem('BCCT_LAST_JS_ERROR',String(e.reason||'Lỗi tác vụ'));}catch(_){}});</script>
+<style id="gear5-crystal-index-378">
+html,body{background:linear-gradient(160deg,rgba(3,15,47,.25),rgba(21,90,155,.18),rgba(116,81,210,.23)),url('grandline-reference-bg.jpg') center/cover fixed!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 18% 14%,rgba(255,255,255,.3) 0 3px,transparent 4px),radial-gradient(circle at 86% 34%,rgba(214,243,255,.32) 0 6px,transparent 7px),repeating-radial-gradient(ellipse at 50% 112%,transparent 0 38px,rgba(255,255,255,.1) 39px 42px,transparent 43px 76px);animation:glowDrift 8s ease-in-out infinite alternate}
+body:after{content:"";position:fixed;right:-70px;bottom:-34px;width:330px;height:265px;background:url('gear5-hero.jpg') center/cover no-repeat;opacity:.22;pointer-events:none;filter:drop-shadow(0 20px 28px rgba(0,0,0,.4));z-index:0}
+@keyframes glowDrift{to{transform:translate3d(0,-8px,0);opacity:.82}}
+.top{background:linear-gradient(135deg,rgba(3,18,55,.72),rgba(50,85,157,.58),rgba(127,84,218,.56))!important;border-bottom:1px solid rgba(255,255,255,.55)!important;backdrop-filter:blur(24px) saturate(1.25)!important;-webkit-backdrop-filter:blur(24px) saturate(1.25)!important}
+.shell{z-index:1}.hero{min-height:164px;padding-right:118px!important;background:linear-gradient(135deg,rgba(5,24,66,.68),rgba(42,110,176,.48),rgba(125,84,214,.52))!important;border:1.5px solid rgba(255,255,255,.75)!important;box-shadow:0 20px 45px rgba(1,15,47,.4),inset 0 1px 0 rgba(255,255,255,.65)!important;backdrop-filter:blur(25px) saturate(1.28)!important}
+.hero:after{content:""!important;right:13px!important;bottom:12px!important;width:92px!important;height:126px!important;background:url('gear5-card.jpg') center/cover no-repeat!important;border:1.5px solid rgba(255,255,255,.9)!important;border-radius:28px!important;opacity:1!important;transform:rotate(2deg)!important;box-shadow:0 15px 30px rgba(2,18,56,.42)!important}
+.heroTop>div{position:relative;z-index:2}.hero h1{font-size:23px!important}.hero p{max-width:none!important}.ver{position:relative;z-index:2;background:linear-gradient(135deg,#b1d1ff,#9b80ff 54%,#ff9dcc)!important;color:#071a46!important;border-color:#fff!important;text-shadow:0 1px 0 rgba(255,255,255,.4)!important}
+.card,.section,.modal{background:linear-gradient(145deg,rgba(239,249,255,.55),rgba(190,219,255,.35))!important;border:1.5px solid rgba(255,255,255,.78)!important;box-shadow:0 15px 34px rgba(1,20,60,.3),inset 0 1px 0 rgba(255,255,255,.86)!important;backdrop-filter:blur(25px) saturate(1.35)!important;-webkit-backdrop-filter:blur(25px) saturate(1.35)!important}
+.card{position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.34),transparent 34%,rgba(165,132,255,.12) 68%,rgba(255,255,255,.24));pointer-events:none}.ico{background:radial-gradient(circle at 35% 25%,#d8e7ff 0 14%,#a690ff 45%,#7552c9 72%,#4d377f 100%)!important;border:1.5px solid rgba(255,255,255,.92)!important;box-shadow:0 10px 24px rgba(54,40,130,.38),inset 0 1px 2px rgba(255,255,255,.9)!important}.card b,.section h2{color:#071a46!important}.card small,.section p{color:#40546f!important}
+.save,.primary{background:linear-gradient(135deg,#acd0ff,#9a81ff 55%,#ff9eca)!important;color:#071a46!important;border:1.5px solid #fff!important}.restore,.historyBtn,.secondary{background:rgba(239,248,255,.58)!important;border:1.5px solid rgba(255,255,255,.82)!important;color:#071a46!important}
+.note{color:#fff!important}.tmq-owner-footer{background:linear-gradient(135deg,rgba(3,18,55,.75),rgba(89,61,177,.67))!important;border-color:rgba(255,255,255,.55)!important}
+@media(max-width:520px){.hero{min-height:154px;padding-right:100px!important}.hero:after{width:78px!important;height:108px!important}.grid{grid-template-columns:1fr 1fr!important}.card,.card.wide{display:flex!important;min-height:140px!important;padding:12px!important}.ico{width:48px!important;height:48px!important;margin-bottom:9px!important}.card b{font-size:14px!important}.card small{font-size:11px!important}.heroTop{display:block}.actions{grid-template-columns:1fr}}
+@media(max-width:365px){.grid{grid-template-columns:1fr!important}.card{min-height:0!important}}
+</style>
+<style id="stable-glass-381">
+/* 3.8.1: kính nổi bằng gradient + shadow; không dùng blur/filter GPU nặng */
+.top,.hero,.card,.section,.modal{
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+body:after{filter:none!important}
+.grid{gap:16px!important;padding:3px 2px 9px!important}
+.card{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  min-height:160px!important;padding:17px 15px!important;border-radius:30px!important;
+  background:
+    linear-gradient(145deg,rgba(238,249,255,.52),rgba(175,216,250,.27) 55%,rgba(194,177,255,.25))!important;
+  border:2.5px solid rgba(255,255,255,.91)!important;
+  box-shadow:
+    0 18px 24px rgba(3,34,78,.30),
+    0 5px 8px rgba(3,28,68,.22),
+    inset 4px 4px 7px rgba(255,255,255,.90),
+    inset -5px -6px 9px rgba(37,99,165,.20)!important;
+  transform:none!important;
+}
+.card:before{
+  content:""!important;position:absolute!important;z-index:-1!important;pointer-events:none!important;
+  left:8px!important;right:8px!important;top:7px!important;height:43%!important;border-radius:24px 24px 46% 46%!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,.08))!important;
+}
+.card:after{
+  content:""!important;position:absolute!important;pointer-events:none!important;
+  left:10%!important;right:10%!important;bottom:7px!important;height:2px!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent)!important;
+}
+.card .ico{
+  width:61px!important;height:61px!important;border-radius:22px!important;font-size:32px!important;margin-bottom:13px!important;
+  background:radial-gradient(circle at 30% 18%,#fff 0 8%,#dbe9ff 14%,#af99ff 44%,#7654da 70%,#4b327f 100%)!important;
+  border:2px solid rgba(255,255,255,.96)!important;
+  box-shadow:0 12px 17px rgba(48,37,117,.39),inset 4px 4px 5px rgba(255,255,255,.92),inset -4px -5px 7px rgba(45,24,104,.30)!important;
+}
+.card b{font-size:17px!important;color:#0a2856!important;text-shadow:0 1px 0 rgba(255,255,255,.75)!important}
+.card small{font-size:12.5px!important;color:rgba(17,45,79,.72)!important}
+.card:active{transform:translateY(2px)!important;box-shadow:0 10px 15px rgba(3,34,78,.28),inset 3px 3px 6px rgba(255,255,255,.86),inset -4px -5px 8px rgba(37,99,165,.18)!important}
+.section{background:linear-gradient(145deg,rgba(239,249,255,.58),rgba(190,221,250,.34))!important;border:2px solid rgba(255,255,255,.85)!important;box-shadow:0 14px 22px rgba(3,34,78,.25),inset 3px 3px 6px rgba(255,255,255,.82),inset -4px -5px 8px rgba(37,99,165,.15)!important}
+@media(max-width:520px){.grid{gap:15px!important}.card,.card.wide{min-height:165px!important;padding:16px 14px!important}}
+</style>
+<style id="bcct-back-navigation-v401">
+.back{width:auto!important;min-width:112px!important;padding:0 13px!important;font-size:15px!important;font-weight:900!important;white-space:nowrap!important}
+</style>
+<style id="tmq-simple-home-v382-fix">
+/* Trang chính gọn: chỉ tên bộ công cụ + phiên bản; thẻ công cụ không còn ghi chú phụ. */
+.simple-hero{min-height:112px!important;padding:20px!important;display:grid!important;place-items:center!important;text-align:center!important}
+.simple-hero:before,.simple-hero:after{content:none!important;display:none!important;background:none!important}
+.simple-hero .heroTop{width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:12px!important}
+.simple-hero .heroTop>h1{margin:0!important;width:100%!important;font-size:30px!important;line-height:1.16!important;letter-spacing:.8px!important;text-align:center!important;color:#fff!important}
+.simple-hero .ver{position:static!important;margin:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:8px 18px!important;font-size:14px!important}
+.card,.card.wide{align-items:center!important;justify-content:center!important;text-align:center!important;gap:12px!important}
+.card .ico{margin:0 auto!important;flex:0 0 auto!important}
+.card b{display:block!important;width:100%!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important;text-align:center!important;line-height:1.28!important;font-size:17px!important}
+.card small{display:none!important}
+@media(max-width:520px){
+ .simple-hero{min-height:104px!important;padding:18px 12px!important}
+ .simple-hero .heroTop{display:flex!important}
+ .simple-hero .heroTop>h1{font-size:27px!important}
+ .card,.card.wide{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-height:154px!important;padding:14px 10px!important}
+ .card .ico{width:56px!important;height:56px!important;font-size:30px!important;margin:0 auto!important}
+ .card b{font-size:15.5px!important;line-height:1.28!important}
+}
+</style>
+<link rel="stylesheet" href="desktop-theme.css?v=20260909-desktop1"><script src="desktop-theme.js?v=20260909-desktop1" defer></script><link rel="stylesheet" href="win98-theme.css">
+</head><body class="bcct-launcher">
+<header class="top"><button aria-label="Quay lại trang chính" class="back" id="back">← Trang chính</button><div class="title" id="title">Bộ công cụ</div></header>
+<main class="shell" id="home">
+<section class="hero simple-hero"><div class="heroTop"><h1>BỘ CÔNG CỤ</h1><span class="ver">Bản công khai • Đã ẩn công cụ riêng tư</span></div></section>
+<section class="grid">
+<button class="card wide" data-file="kiem-tra-thu-thuat-376.html#data" data-title="Kiểm tra thủ thuật tim mạch"><span class="ico">🫀</span><b>Kiểm tra thủ thuật tim mạch</b></button>
+
+
+<button class="card" data-file="bmi.html" data-title="Tính BMI"><span class="ico">⚖️</span><b>Tính BMI</b></button>
+<button class="card" data-file="insulin.html" data-title="Insulin &amp; Đường huyết"><span class="ico">💉</span><b>Insulin &amp; Đường huyết</b></button>
+<button class="card" data-file="ldl.html" data-title="Tính LDL-Cholesterol"><span class="ico">🩸</span><b>LDL-Cholesterol</b></button>
+<button class="card" data-file="egfr.html" data-title="Tính eGFR CKD-EPI 2021"><span class="ico">🧪</span><b>eGFR CKD-EPI 2021</b></button>
+
+
+<button class="card" data-file="news2.html" data-title="Tính điểm NEWS2"><span class="ico">🩺</span><b>Tính điểm NEWS2</b></button>
+<button class="card" data-file="morse.html" data-title="Thang điểm Morse"><span class="ico">🚶</span><b>Thang điểm Morse</b></button>
+<button class="card" data-file="braden.html" data-title="Thang điểm Braden"><span class="ico">🛏️</span><b>Thang điểm Braden</b></button>
+<button class="card wide" data-file="drug-lookup.html" data-title="Tra thuốc tiếng Việt ngoại tuyến"><span class="ico">💊</span><b>Tra thuốc tiếng Việt ngoại tuyến</b></button>
+<button class="card" data-file="truyen-dich.html" data-title="Tính thời gian truyền dịch"><span class="ico">💧</span><b>Thời gian truyền dịch</b></button>
+<button class="card" data-file="bom-tiem-dien.html" data-title="Bơm tiêm điện"><span class="ico">💉</span><b>Bơm tiêm điện</b></button>
+<button class="card" data-file="icd10.html" data-title="Tra cứu ICD-10 2026"><span class="ico">📘</span><b>ICD-10 2026 ngoại tuyến</b></button>
+<button class="card" data-file="bhyt-qr.html" data-title="Quét QR CCCD/BHYT"><span class="ico">🪪</span><b>QR CCCD / BHYT</b></button>
+</section>
+<section class="section"><h2>🕘 Lịch sử</h2><p>Tất cả lần tính, kiểm tra và thay đổi quan trọng đều được lưu để xem lại.</p><button class="action historyBtn" id="historyBtn">Xem lịch sử (<span id="historyCount">0</span>)</button></section>
+<div hidden="hidden" id="publicBackupRuntimeStubs"><button id="backupBtn"></button><button id="selectRestoreFileBtn"></button><input id="restoreFileInput" type="file"/><select id="restoreScope"><option value="all">all</option></select><button id="restoreBtn"></button><div id="restoreFileStatus"></div><div id="backupStatus"></div></div>
+<div class="note">Bản công khai • Không có công cụ riêng tư và sao lưu/khôi phục</div>
+</main><iframe allow="camera" class="frame" id="frame" title="Công cụ"></iframe><iframe hidden="" id="syncFrame" title="Đồng bộ dữ liệu"></iframe>
+<div class="modalWrap" id="historyModal"><section class="modal"><div class="modalTop"><h2>Lịch sử hoạt động</h2><button class="secondary" id="closeHistoryBtn">Đóng</button></div><div class="modalBtns"><select id="historyFilter"><option value="all">Tất cả công cụ</option><option value="Kiểm tra thủ thuật">Kiểm tra thủ thuật</option><option value="BMI">BMI</option><option value="Insulin &amp; Đường huyết">Insulin &amp; Đường huyết</option><option value="LDL-C">LDL-C</option><option value="eGFR">eGFR</option><option value="NEWS2">NEWS2</option><option value="Morse">Morse</option><option value="Braden">Braden</option><option value="Tra cứu thuốc">Tra cứu thuốc</option><option value="Truyền dịch">Truyền dịch</option><option value="Bơm tiêm điện">Bơm tiêm điện</option><option value="ICD-10">ICD-10</option><option value="BHYT QR">BHYT QR</option><option value="Hệ thống">Hệ thống</option></select><button class="danger" id="clearHistoryBtn">Xóa toàn bộ lịch sử</button></div><div class="historyList" id="historyList"></div></section></div>
+<div class="toast" id="toast"></div>
+<script>
+'use strict';
+const APP_VERSION='3.8.8-apk-ui-sync-fullbackup',VERSION_CODE=402;
+const TOOL_FILES=['bmi.html','insulin.html','ldl.html','egfr.html','news2.html','morse.html','braden.html','drug-lookup.html','kiem-tra-thu-thuat-376.html','truyen-dich.html','bom-tiem-dien.html','icd10.html','bhyt-qr.html'];
+const HISTORY_KEY='BCCT_HISTORY_V3',BACKUP_KEY='BCCT_LAST_BACKUP_V3',BACKUP_AT_KEY='BCCT_LAST_BACKUP_AT_V3',BACKUP_FILE_KEY='BCCT_LAST_BACKUP_FILE_V3';
+const home=document.getElementById('home'),frame=document.getElementById('frame'),back=document.getElementById('back'),title=document.getElementById('title');
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2200)}
+function showHome(push=true){frame.style.display='none';frame.src='about:blank';home.style.display='block';back.style.display='none';title.textContent='Bộ công cụ';updateBackupStatus();updateHistoryCount();if(push)history.pushState({home:true},'', '#home')}
+function openTool(file,name,push=true){home.style.display='none';frame.style.display='block';frame.src=file;back.style.display='block';title.textContent=name;if(push)history.pushState({file,name},'', '#'+file.replace('.html',''))}
+document.querySelectorAll('[data-file]').forEach(b=>b.addEventListener('click',()=>openTool(b.dataset.file,b.dataset.title)));
+back.addEventListener('click',()=>{showHome(false);history.replaceState({home:true},'', '#home')});
+addEventListener('popstate',e=>{if(e.state&&e.state.file)openTool(e.state.file,e.state.name,false);else showHome(false)});history.replaceState({home:true},'', '#home');
+window.bcctHandleAndroidBack=function(){const modal=document.getElementById('historyModal');if(modal&&modal.style.display==='flex'){modal.style.display='none';return'handled'}if(frame&&frame.style.display==='block'){showHome(false);history.replaceState({home:true},'', '#home');return'handled'}return'home'};
+
+function loadHistory(){try{const x=JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}}
+function saveHistory(list){let out=list.slice(0,400);while(JSON.stringify(out).length>3300000&&out.length>10)out.pop();localStorage.setItem(HISTORY_KEY,JSON.stringify(out));updateHistoryCount()}
+function addHistory(entry){const item={id:Date.now().toString(36)+Math.random().toString(36).slice(2,8),time:new Date().toISOString(),tool:entry.tool||'Hệ thống',title:entry.title||'Hoạt động',summary:entry.summary||'',detail:entry.detail||'',issues:Array.isArray(entry.issues)?entry.issues.slice(0,500):[]};const list=loadHistory();list.unshift(item);saveHistory(list)}
+function updateHistoryCount(){document.getElementById('historyCount').textContent=loadHistory().length}
+addEventListener('message',e=>{const m=e.data;if(m&&m.type==='BCCT_HISTORY_ADD'&&m.entry)addHistory(m.entry)});
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderHistory(){const f=document.getElementById('historyFilter').value;const list=loadHistory().filter(x=>f==='all'||x.tool===f),box=document.getElementById('historyList');if(!list.length){box.innerHTML='<div class="empty">Chưa có lịch sử phù hợp.</div>';return}box.innerHTML=list.map(x=>{const issues=(x.issues||[]).map(i=>'<div class="issue '+(i.level==='Cảnh báo'?'warn':'')+'"><b>'+esc(i.level||'')+' • '+esc(i.type||'')+'</b><br>'+esc((i.sheet?i.sheet+'!'+i.row+' • ':'')+(i.detail||''))+'</div>').join('');return '<article class="hist"><div class="histHead"><b>'+esc(x.tool)+' — '+esc(x.title)+'</b><time>'+new Date(x.time).toLocaleString('vi-VN')+'</time></div><p>'+esc(x.summary)+'</p>'+((x.detail||issues)?'<details><summary>Xem chi tiết</summary><p>'+esc(x.detail)+'</p>'+issues+'</details>':'')+'</article>'}).join('')}
+document.getElementById('historyBtn').onclick=()=>{renderHistory();document.getElementById('historyModal').style.display='flex'};
+document.getElementById('closeHistoryBtn').onclick=()=>document.getElementById('historyModal').style.display='none';
+document.getElementById('historyFilter').onchange=renderHistory;
+document.getElementById('clearHistoryBtn').onclick=()=>{if(confirm('Xóa toàn bộ lịch sử?')){localStorage.removeItem(HISTORY_KEY);renderHistory();updateHistoryCount();toast('Đã xóa lịch sử')}};
+document.getElementById('historyModal').addEventListener('click',e=>{if(e.target.id==='historyModal')e.currentTarget.style.display='none'});
+
+function bytesToBase64(bytes){let s='';const step=0x8000;for(let i=0;i<bytes.length;i+=step)s+=String.fromCharCode(...bytes.subarray(i,i+step));return btoa(s)}
+function base64ToBytes(text){text=text.replace(/-/g,'+').replace(/_/g,'/');while(text.length%4)text+='=';const s=atob(text),out=new Uint8Array(s.length);for(let i=0;i<s.length;i++)out[i]=s.charCodeAt(i);return out}
+async function gzip(bytes){if(!('CompressionStream' in window))return null;const cs=new CompressionStream('gzip'),w=cs.writable.getWriter();w.write(bytes);w.close();return new Uint8Array(await new Response(cs.readable).arrayBuffer())}
+async function gunzip(bytes){if(!('DecompressionStream' in window))throw new Error('Máy chưa hỗ trợ giải nén bản sao lưu.');const ds=new DecompressionStream('gzip'),w=ds.writable.getWriter();w.write(bytes);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+function ownStorage(){const storage={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k!==BACKUP_KEY&&k!==BACKUP_AT_KEY&&k!==BACKUP_FILE_KEY)storage[k]=localStorage.getItem(k)}return storage}
+function syncTool(file,action,storage,removeKeys,indexedDBPayload){return new Promise((resolve,reject)=>{const iframe=document.getElementById('syncFrame'),requestId='bcct_'+Date.now()+'_'+Math.random().toString(36).slice(2);let done=false;const cleanup=()=>{removeEventListener('message',onMessage);clearTimeout(timer);iframe.onload=null};const finish=(err,value)=>{if(done)return;done=true;cleanup();err?reject(err):resolve(value)};const onMessage=e=>{const m=e.data;if(e.source===iframe.contentWindow&&m&&m.requestId===requestId&&m.type==='BCCT_SYNC_RESULT')finish(m.ok===false?new Error(m.error||'Không đồng bộ được '+file):null,{storage:m.storage||{},indexedDB:m.indexedDB||null,indexedDBStats:m.indexedDBStats||null})};addEventListener('message',onMessage);const timer=setTimeout(()=>finish(new Error('Quá thời gian đồng bộ '+file)),file==='drug-lookup.html'?300000:90000);iframe.onload=()=>{try{iframe.contentWindow.postMessage({type:'BCCT_SYNC',requestId,action,storage:storage||{},removeKeys:removeKeys||[],indexedDB:indexedDBPayload||null},'*')}catch(e){finish(e)}};iframe.src=file+'#sync='+encodeURIComponent(requestId)})}
+addEventListener('message',async e=>{const m=e.data;if(!m||m.type!=='BCCT_MILK_DATA_REQUEST'||!m.requestId)return;const target=e.source;try{const r=await syncTool('tinh-sua-tre-em.html','export'),raw=(r.storage||{}).MILK_TRACKER_V1;let rows=[];try{const x=JSON.parse(raw||'[]');if(Array.isArray(x))rows=x}catch(_e){}rows=rows.map((x,i)=>({name:String(x&&x.name||''),dob:String(x&&x.dob||''),date:String(x&&x.date||''),weight:Number(x&&x.weight||0),length:Number(x&&x.length||0),head:Number(x&&x.head||0),birthWeight:Number(x&&x.birthWeight||0),key:String(x&&x.key||''),sourceOrder:Number(x&&x.sourceOrder||i+1)})).filter(x=>x.name&&x.dob&&x.date&&x.weight>0);target.postMessage({type:'BCCT_MILK_DATA_RESULT',requestId:m.requestId,ok:true,rows},'*')}catch(err){try{target.postMessage({type:'BCCT_MILK_DATA_RESULT',requestId:m.requestId,ok:false,error:String(err&&err.message||err)},'*')}catch(_e){}}});
+
+async function collectBackup(){const stores={'index.html':ownStorage()},databases={},backupStats={offlineDrugRecords:0,offlineImages:0,offlineImageBytes:0,idbRecords:0};for(const file of TOOL_FILES){const r=await syncTool(file,'export'),st=r.storage||{};delete st[BACKUP_KEY];delete st[BACKUP_AT_KEY];delete st[BACKUP_FILE_KEY];stores[file]=st;if(r.indexedDB){databases[file]=r.indexedDB;const x=r.indexedDBStats||r.indexedDB.stats||{};backupStats.offlineImages=Number(x.blobCount||0);backupStats.offlineImageBytes=Number(x.blobBytes||0);backupStats.idbRecords=Number(x.records||0);const db=(r.indexedDB.databases||[]).find(d=>d&&d.name==='bcct_longchau_offline_v4');if(db){const ps=(db.stores||[]).find(z=>z&&z.name==='products');backupStats.offlineDrugRecords=ps&&Array.isArray(ps.records)?ps.records.length:0}}}backupStats.localStorageKeys=Object.values(stores).reduce((n,x)=>n+Object.keys(x||{}).length,0);return{format:'BO_CONG_CU_TONG_HOP',version:5,appVersion:APP_VERSION,versionCode:VERSION_CODE,createdAt:new Date().toISOString(),stores,databases,backupStats}}
+async function encodeBackup(data){const raw=new TextEncoder().encode(JSON.stringify(data));try{const packed=await gzip(raw);if(packed&&packed.length<raw.length)return'BCCT5G:'+bytesToBase64(packed)}catch(e){}return'BCCT5:'+bytesToBase64(raw)}
+async function decodeBackup(code){let gz=false,prefix='';for(const p of ['BCCT5G:','BCCT5:','BCCT4G:','BCCT4:','BCCT3G:','BCCT3:'])if(code.startsWith(p)){prefix=p;gz=p.endsWith('G:');break}if(!prefix)throw new Error('Bản sao lưu không đúng định dạng.');let bytes=base64ToBytes(code.slice(prefix.length));if(gz)bytes=await gunzip(bytes);const data=JSON.parse(new TextDecoder().decode(bytes));if(!data||data.format!=='BO_CONG_CU_TONG_HOP'||![3,4,5].includes(Number(data.version))||typeof data.stores!=='object')throw new Error('Bản sao lưu không hợp lệ.');return data}
+const STAFF_V4='heart_staff_saved_v4',RULES_V4='heart_rules_saved_v4';
+const STAFF_OLD=['heart_staff_saved_v1','heart_staff_saved_v2','heart_staff_saved_v3'],RULES_OLD=['heart_rules_saved_v1','heart_rules_saved_v2','heart_rules_saved_v3'];
+function firstValue(obj,keys){for(const k of keys)if(obj&&obj[k]!=null)return obj[k];return null}
+function normalizedHeartStore(src){src={...(src||{})};if(src[STAFF_V4]==null){const v=firstValue(src,STAFF_OLD);if(v!=null)src[STAFF_V4]=v}if(src[RULES_V4]==null){const v=firstValue(src,RULES_OLD);if(v!=null)src[RULES_V4]=v}for(const k of [...STAFF_OLD,...RULES_OLD])delete src[k];return src}
+async function restoreBackupData(data,scope){const stores=data.stores||{},heart=normalizedHeartStore(stores['kiem-tra-thu-thuat-376.html']||stores['kiem-tra-thu-thuat-375.html']||stores['kiem-tra-thu-thuat-374.html']||stores['kiem-tra-thu-thuat-373.html']||stores['kiem-tra-thu-thuat-372.html']||stores['kiem-tra-thu-thuat.html']||{}),heartFile='kiem-tra-thu-thuat-376.html';
+ if(scope==='all'){localStorage.clear();for(const [k,v] of Object.entries(stores['index.html']||{}))localStorage.setItem(k,String(v));for(const file of TOOL_FILES){const dbPayload=data.databases&&data.databases[file]?data.databases[file]:null;await syncTool(file,'import',file===heartFile?heart:(stores[file]||{}),[],dbPayload)}return data.version>=4?'toàn bộ ứng dụng, gồm thuốc và ảnh ngoại tuyến':'toàn bộ dữ liệu chữ từ bản sao lưu cũ (bản cũ không chứa ảnh/IndexedDB)'}
+ if(scope==='history'){const v=(stores['index.html']||{})[HISTORY_KEY];if(v==null)localStorage.removeItem(HISTORY_KEY);else localStorage.setItem(HISTORY_KEY,String(v));return 'lịch sử'}
+ if(scope==='staff'){const v=heart[STAFF_V4],set=v==null?{}:{[STAFF_V4]:v};await syncTool(heartFile,'merge',set,[STAFF_V4,...STAFF_OLD]);return 'bảng danh sách nhân viên'}
+ if(scope==='rules'){const v=heart[RULES_V4],set=v==null?{}:{[RULES_V4]:v};await syncTool(heartFile,'merge',set,[RULES_V4,...RULES_OLD]);return 'bảng danh mục thủ thuật'}
+ const set={};if(heart[STAFF_V4]!=null)set[STAFF_V4]=heart[STAFF_V4];if(heart[RULES_V4]!=null)set[RULES_V4]=heart[RULES_V4];await syncTool(heartFile,'merge',set,[STAFF_V4,RULES_V4,...STAFF_OLD,...RULES_OLD]);return 'hai bảng thủ thuật'}
+function nativeBridge(){try{return typeof window.backupAndroid!=='undefined'&&window.backupAndroid!=null}catch(e){return false}}
+function saveBackupFile(code){if(nativeBridge()){let result='';try{result=String(window.backupAndroid.saveBackup(code)||'')}catch(e){throw new Error('Cầu nối Android lỗi: '+(e&&e.message?e.message:String(e)))}if(!result||result.startsWith('ERROR:'))throw new Error(result.replace(/^ERROR:/,'')||'Không lưu được tệp sao lưu.');return result}const d=new Date(),pad=n=>String(n).padStart(2,'0'),name='BCCT_FullBackupV5_'+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'_'+pad(d.getHours())+pad(d.getMinutes())+'.bcct',blob=new Blob([code],{type:'application/octet-stream'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);return name}
+function loadLatestBackupFile(){if(!nativeBridge())return'';let result='';try{result=String(window.backupAndroid.loadLatestBackup()||'')}catch(e){throw new Error('Cầu nối Android lỗi: '+(e&&e.message?e.message:String(e)))}if(result.startsWith('ERROR:'))throw new Error(result.replace(/^ERROR:/,''));return result}
+function updateBackupStatus(){const at=localStorage.getItem(BACKUP_AT_KEY),file=localStorage.getItem(BACKUP_FILE_KEY),el=document.getElementById('backupStatus');if(at){el.className='status ok';el.textContent='Bản gần nhất: '+new Date(at).toLocaleString('vi-VN')+(file?' • '+file:' • Download/sao luu app riêng')}else{el.className='status';el.textContent='Chưa có bản sao lưu trong Download/sao luu app riêng.'}}
+document.getElementById('backupBtn').onclick=async function(){const b=this;b.disabled=true;const old=b.textContent;b.textContent='Đang gom toàn bộ dữ liệu…';try{const data=await collectBackup(),code=await encodeBackup(data),bs=data.backupStats||{};localStorage.removeItem(BACKUP_KEY);let file='';try{file=saveBackupFile(code)}catch(nativeError){const detail=nativeError&&nativeError.message?nativeError.message:String(nativeError);localStorage.setItem(BACKUP_FILE_KEY,'CHƯA lưu vào Download • '+detail);updateBackupStatus();throw nativeError}localStorage.setItem(BACKUP_AT_KEY,data.createdAt);localStorage.setItem(BACKUP_FILE_KEY,file);const encodedBytes=Math.ceil(code.length*3/4);addHistory({tool:'Hệ thống',title:'Full Backup V5',summary:'Đã lưu '+Number(bs.offlineDrugRecords||0)+' thuốc offline, '+Number(bs.offlineImages||0)+' ảnh ('+formatBytes(bs.offlineImageBytes||0)+'), '+Number(bs.localStorageKeys||0)+' mục dữ liệu vào '+file+'.'});updateBackupStatus();document.getElementById('backupStatus').className='status ok';document.getElementById('backupStatus').textContent='FULL BACKUP V5: '+file+' • '+Number(bs.localStorageKeys||0)+' mục dữ liệu • '+Number(bs.offlineDrugRecords||0)+' thuốc offline • '+Number(bs.offlineImages||0)+' ảnh ('+formatBytes(bs.offlineImageBytes||0)+') • tệp mã hóa ~'+formatBytes(encodedBytes)+'.';toast('Đã sao lưu TOÀN BỘ: '+file)}catch(e){toast('Sao lưu lỗi: '+e.message)}finally{b.disabled=false;b.textContent=old}};
+let selectedBackupFile=null;
+function parseStoredJson(v){try{return typeof v==='string'?JSON.parse(v):v}catch(e){return null}}
+function formatBytes(n){n=Number(n||0);if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';if(n<1073741824)return(n/1048576).toFixed(1)+' MB';return(n/1073741824).toFixed(2)+' GB'}
+function countBackupItems(data){
+ const stores=data.stores||{},heart=normalizedHeartStore(stores['kiem-tra-thu-thuat-376.html']||stores['kiem-tra-thu-thuat-375.html']||stores['kiem-tra-thu-thuat-374.html']||stores['kiem-tra-thu-thuat-373.html']||stores['kiem-tra-thu-thuat-372.html']||stores['kiem-tra-thu-thuat.html']||{}),own=stores['index.html']||{};
+ const staff=parseStoredJson(heart[STAFF_V4]),rules=parseStoredJson(heart[RULES_V4]),history=parseStoredJson(own[HISTORY_KEY]);
+ const bs=data.backupStats||{},drugDb=data.databases&&data.databases['drug-lookup.html'],longDb=drugDb&&Array.isArray(drugDb.databases)?drugDb.databases.find(d=>d&&d.name==='bcct_longchau_offline_v4'):null,imgDb=drugDb&&Array.isArray(drugDb.databases)?drugDb.databases.find(d=>d&&d.name==='bcct_drug_image_cache_v1'):null,productStore=longDb&&Array.isArray(longDb.stores)?longDb.stores.find(s=>s&&s.name==='products'):null,imageStore=imgDb&&Array.isArray(imgDb.stores)?imgDb.stores.find(s=>s&&s.name==='images'):null;
+ return{staff:staff&&Array.isArray(staff.items)?staff.items.length:0,rules:rules&&Array.isArray(rules.items)?rules.items.length:0,history:Array.isArray(history)?history.length:0,offlineDrugs:Number(bs.offlineDrugRecords||(productStore&&productStore.records&&productStore.records.length)||0),offlineImages:Number(bs.offlineImages||(imageStore&&imageStore.records&&imageStore.records.length)||0),offlineImageBytes:Number(bs.offlineImageBytes||(drugDb&&drugDb.stats&&drugDb.stats.blobBytes)||0)};
+}
+function clearSelectedBackup(message){selectedBackupFile=null;const input=document.getElementById('restoreFileInput'),btn=document.getElementById('restoreBtn'),status=document.getElementById('restoreFileStatus');if(input)input.value='';btn.disabled=true;status.className='status'+(message?' err':'');status.textContent=message||'Chưa chọn tệp sao lưu trong bộ nhớ máy.'}
+document.getElementById('selectRestoreFileBtn').onclick=function(){document.getElementById('restoreFileInput').click()};
+document.getElementById('restoreFileInput').addEventListener('change',async function(){
+ const file=this.files&&this.files[0],status=document.getElementById('restoreFileStatus'),restoreBtn=document.getElementById('restoreBtn');
+ if(!file){clearSelectedBackup();return}
+ status.className='status';status.textContent='Đang kiểm tra tệp '+file.name+'…';restoreBtn.disabled=true;
+ try{
+  const code=(await file.text()).replace(/^\uFEFF/,'').trim();if(!code)throw new Error('Tệp trống.');
+  const data=await decodeBackup(code),counts=countBackupItems(data);
+  selectedBackupFile={name:file.name,size:file.size||0,code,data};
+  status.className='status ok';
+  status.textContent='ĐÃ CHỌN: '+file.name+' • '+(data.version>=5?'FULL BACKUP V5':data.version>=4?'FULL BACKUP V4':'BACKUP CŨ')+' • '+new Date(data.createdAt).toLocaleString('vi-VN')+' • '+counts.staff+' nhân viên • '+counts.rules+' thủ thuật • '+counts.history+' lịch sử • '+counts.offlineDrugs+' thuốc offline • '+counts.offlineImages+' ảnh ('+formatBytes(counts.offlineImageBytes)+').';
+  restoreBtn.disabled=false;
+ }catch(e){clearSelectedBackup('Tệp không hợp lệ: '+e.message)}
+});
+document.getElementById('restoreBtn').onclick=async function(){
+ const b=this;if(!selectedBackupFile){clearSelectedBackup('Hãy chọn tệp sao lưu trong bộ nhớ máy trước.');return}
+ b.disabled=true;const old=b.textContent;b.textContent='Đang khôi phục…';
+ try{
+  const data=selectedBackupFile.data,code=selectedBackupFile.code,scope=document.getElementById('restoreScope').value,label=await restoreBackupData(data,scope),fileName=selectedBackupFile.name;
+  localStorage.removeItem(BACKUP_KEY);localStorage.setItem(BACKUP_AT_KEY,data.createdAt);localStorage.setItem(BACKUP_FILE_KEY,'Tệp đã chọn: '+fileName);
+  addHistory({tool:'Hệ thống',title:'Khôi phục từ bộ nhớ máy',summary:'Đã khôi phục '+label+' từ tệp '+fileName+', bản '+new Date(data.createdAt).toLocaleString('vi-VN')+'.'});
+  toast('Đã khôi phục '+label+' từ '+fileName);setTimeout(()=>location.reload(),800)
+ }catch(e){toast('Khôi phục lỗi: '+e.message);b.disabled=false;b.textContent=old}
+};
+updateHistoryCount();updateBackupStatus();
+</script>
+<footer class="tmq-owner-footer">☠️ <b>CHÍNH CHỦ: TRƯƠNG MINH QUÝ</b><span> • WINDOWS 98 • MISANS</span></footer>
+<script>
+(async function migrateLatestBackupForSecureCamera(){
+ const KEY='bcct_secure_origin_migration_382';
+ if(localStorage.getItem(KEY))return;
+ try{
+  if(typeof loadLatestBackupFile!=='function'||typeof decodeBackup!=='function'||typeof restoreBackupData!=='function')return;
+  const code=loadLatestBackupFile();
+  if(!code||!/^BCCT[345]G?:/.test(code)){localStorage.setItem(KEY,'NO_BACKUP');return}
+  const data=await decodeBackup(code);
+  await restoreBackupData(data,'all');
+  localStorage.setItem(KEY,'RESTORED:'+new Date().toISOString());
+  try{toast('Đã tự khôi phục dữ liệu từ bản sao lưu gần nhất.')}catch(e){}
+  setTimeout(()=>location.reload(),700);
+ }catch(e){
+  localStorage.setItem(KEY,'ERROR:'+String(e&&e.message||e));
+  try{toast('Chưa tự khôi phục được dữ liệu cũ: '+String(e&&e.message||e))}catch(_e){}
+ }
+})();
+</script>
+</body></html>
