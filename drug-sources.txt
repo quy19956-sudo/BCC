@@ -1,0 +1,31 @@
+NGUỒN DỮ LIỆU DANH MỤC THUỐC NGOẠI TUYẾN
+Bản tổng hợp: 27/07/2026
+
+1. FDA Drugs@FDA – Products.txt
+- Bản dữ liệu được dự án UoA-eResearch/pharmac thu thập ngày 27/03/2026.
+- Dữ liệu của Chính phủ Liên bang Hoa Kỳ, thuộc phạm vi công cộng.
+- FDA không xác nhận hay bảo trợ ứng dụng này.
+
+2. Medsafe New Zealand – Product Register
+- Bản dữ liệu được dự án UoA-eResearch/pharmac thu thập ngày 30/03/2026.
+- Bản quyền Medsafe, Bộ Y tế New Zealand; sử dụng theo điều khoản Crown Copyright.
+- Medsafe không xác nhận hay bảo trợ ứng dụng này.
+
+3. Therapeutic Goods Administration Australia – ARTG Public Summary
+- Bản dữ liệu được dự án UoA-eResearch/pharmac thu thập ngày 13/04/2026.
+- Bản quyền Commonwealth of Australia; giấy phép Creative Commons Attribution 4.0 International.
+- TGA không xác nhận hay bảo trợ ứng dụng này.
+
+4. RxNorm / U.S. National Library of Medicine
+- Bản thuật ngữ lưu trong ứng dụng: 22/06/2026.
+
+5. Tên thương mại Việt Nam bổ sung
+- Các mục bổ sung thủ công để nối tên sản phẩm với hoạt chất; được đánh dấu riêng trong giao diện.
+
+Lưu ý: Danh mục chỉ hỗ trợ nhận diện tên sản phẩm, hoạt chất, hàm lượng và dạng dùng. Danh mục không đồng nghĩa thuốc đang được phép lưu hành ở nơi người dùng sinh sống. Nội dung tiếng Việt tổng hợp không thay thế nhãn thuốc hoặc tư vấn chuyên môn.
+
+Nguồn tìm kiếm trực tiếp khi tên chưa có trong danh mục cục bộ:
+- Nhà thuốc Long Châu, Trung Tâm Thuốc, Pharmacity, Nhà thuốc An Khang, Nhà thuốc Việt
+- Vinmec, YouMed, Medlatec và các trang y tế Việt Nam có nội dung công khai
+- DailyMed, MedlinePlus, Drugs.com, 1mg và các nguồn quốc tế được máy tìm kiếm trả về
+- Jina Reader Search (s.jina.ai) dùng để tìm và đọc kết quả công khai; nội dung được tách mục, dịch tiếng Việt và lưu cục bộ sau lần tra đầu tiên.

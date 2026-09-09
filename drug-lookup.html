@@ -1,0 +1,99 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="author" content="Trương Minh Quý"><title>Tra cứu thuốc tiếng Việt ngoại tuyến</title><link rel="stylesheet" href="mobile-theme.css"><style>
+.suggestions{display:grid;gap:7px;margin-top:9px}.suggestion{text-align:left;background:#e5f5fb;border:1px solid #8fbfd2;color:var(--navy);padding:10px}.suggestion strong{display:block;font-size:14px;overflow-wrap:anywhere}.suggestion small{display:block;font-size:11px;margin-top:3px;color:#5b7380;line-height:1.45}.suggestion.web strong{font-size:14.5px}.online-note b{color:#0b3b67}.drug-head{background:linear-gradient(135deg,#fff1ad,#fffdf4);border:1.5px solid #d5bd68;border-radius:16px;padding:13px}.drug-name{font-size:22px;font-weight:950;color:var(--navy);overflow-wrap:anywhere}.clinical{border-left-color:var(--ocean)}.contra{border-left-color:var(--red)}.side{border-left-color:#dc8500}.interaction{border-left-color:#7048a8}.notice{font-size:11.5px;line-height:1.5;padding:10px;border-radius:12px;background:#fff0ee;border:1px solid #e3a1aa;color:#8e1c28;margin-top:8px}.source-note{font-size:11px;color:#60727b;margin:7px 0}.lang-vi{background:#f4fbfd;border-radius:10px;padding:9px}.loading{padding:16px;text-align:center;font-weight:800}.product-meta{display:grid;gap:5px;margin-top:9px}.meta-row{display:grid;grid-template-columns:minmax(105px,.8fr) minmax(0,1.4fr);gap:8px;padding:7px 8px;background:rgba(255,255,255,.62);border-radius:9px;font-size:11px;line-height:1.35}.meta-row b{color:#17334f}.meta-row span{overflow-wrap:anywhere}.tag.warn{background:#fff0c7;color:#794800;border-color:#e0b35f}.web-sources{display:grid;gap:7px;margin-top:10px}.web-source{display:block;background:#f7fbff;border:1px solid #9bbfd2;border-radius:10px;padding:9px;color:#143552;text-decoration:none;font-size:11px;line-height:1.4;overflow-wrap:anywhere}.web-source b{display:block;font-size:12px;margin-bottom:2px}.web-source small{color:#617885}.suggestion.web{background:#e9e2ff;border-color:#9980d3}.suggestion.has-img{display:grid;grid-template-columns:58px 1fr;align-items:center;gap:9px}.suggestion.has-img img{width:58px;height:58px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid #c7badf}.suggestion.has-img span{min-width:0}.online-note{font-size:11px;line-height:1.45;background:#eef7ff;border:1px solid #91bad6;border-radius:10px;padding:9px;margin:8px 0}.web-deep-btn{width:100%;border:1px solid #7961c5;background:linear-gradient(135deg,#ece5ff,#d7f2ff);color:#172a55;font-weight:900;padding:11px;border-radius:12px;margin:7px 0 10px}.compact-hero{min-height:auto;padding:18px 20px}.compact-hero h1{margin:0}.sync-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}.sync-btn{padding:8px 11px;font-size:11px;border-radius:10px}.sync-line span{font-size:10.5px;color:#31506a}.hero .meta,.hero p{display:none}.product-gallery{display:grid;grid-template-columns:minmax(0,280px);justify-content:center;gap:7px;margin-top:10px}.product-gallery img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border:1px solid #d5bd68;border-radius:12px}.product-gallery.hidden{display:none}.image-shell{display:grid;gap:6px}.image-caption{text-align:center;font-size:10.5px;color:#536a78;line-height:1.35}.image-loading{min-height:220px;display:grid;place-items:center;text-align:center;padding:18px;background:rgba(255,255,255,.72);border:1px dashed #9db7c9;border-radius:12px;color:#24465f;font-weight:850;line-height:1.45}.image-sync{padding:12px 14px}.image-sync-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.image-sync-title{font-size:14px;font-weight:950;color:var(--navy)}.image-sync button{padding:7px 10px;border-radius:9px;font-size:10.5px}.image-sync progress{display:block;width:100%;height:14px;margin-top:9px;accent-color:#496fd9}.image-sync-line{display:flex;justify-content:space-between;gap:10px;margin-top:6px;font-size:10.5px;color:#31506a}.image-sync-current{margin-top:5px;font-size:10px;color:#60727b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sync-group{margin-top:9px;padding-top:8px;border-top:1px solid rgba(72,105,135,.22)}.sync-group:first-of-type{border-top:0;padding-top:0}.sync-group.hidden{display:none}.sync-group-label{font-size:10.5px;font-weight:900;color:#24465f}.image-sync.done progress{accent-color:#269263}.image-sync.error progress{accent-color:#b93647}
+</style><link rel="stylesheet" href="desktop-theme.css?v=20260909-desktop1"><script src="desktop-theme.js?v=20260909-desktop1" defer></script><link rel="stylesheet" href="win98-theme.css">
+</head><body><main class="wrap">
+<section class="card"><label class="label" for="drugInput">Tên thuốc / biệt dược / hoạt chất</label><input id="drugInput" autocomplete="off" spellcheck="false" placeholder="Ví dụ: Grandaxin, Tofisopam, Panadol"><p class="hint">Nhập tối thiểu 2 ký tự. Bấm Enter để tìm nhiều sản phẩm Long Châu kèm giá tham khảo. Toàn bộ kết quả hiện ra sẽ tự tải chi tiết và lưu ngoại tuyến, không cần mở từng thuốc.</p><div id="suggestions" class="suggestions"></div><div id="message" class="status"></div></section>
+<section id="imageSyncPanel" class="card image-sync">
+  <div class="image-sync-head"><div class="image-sync-title">⬇️ Tiến độ tải ngoại tuyến</div><button id="imageSyncBtn" type="button">Đồng bộ ảnh</button></div>
+  <div id="dataSyncGroup" class="sync-group hidden">
+    <div class="sync-group-label">Dữ liệu kết quả</div>
+    <progress id="dataSyncProgress" max="1" value="0"></progress>
+    <div class="image-sync-line"><span id="dataSyncText"></span><b id="dataSyncPercent">0%</b></div>
+    <div id="dataSyncCurrent" class="image-sync-current"></div>
+  </div>
+  <div class="sync-group">
+    <div class="sync-group-label">Ảnh đại diện</div>
+    <progress id="imageSyncProgress" max="1" value="0"></progress>
+    <div class="image-sync-line"><span id="imageSyncText">Đang chuẩn bị kiểm tra ảnh đã lưu…</span><b id="imageSyncPercent">0%</b></div>
+    <div id="imageSyncCurrent" class="image-sync-current"></div>
+  </div>
+</section>
+<section id="result" class="hidden"><div class="drug-head"><div id="drugName" class="drug-name"></div><div id="aliases" class="hint"></div><div id="sourceBadge" style="margin-top:7px"></div><div id="productImages" class="product-gallery hidden"></div><div id="productMeta" class="product-meta"></div></div><div id="clinicalBlocks"></div><div id="resultNotice" class="notice"><b>Lưu ý:</b> Chọn một kết quả để xem dữ liệu.</div></section>
+<div class="owner">☠️ <b>CHÍNH CHỦ: TRƯƠNG MINH QUÝ</b></div></main>
+<script src="drug-data.js"></script><script src="drug-extra.js"></script><script src="drug-local.js"></script><script src="global-drug-catalog.js"></script><script src="rxnorm-data.js"></script><script src="drug-auto.js"></script><script src="drug-vn-offline.js"></script><script src="drug-image-cache.js"></script><script src="drug-longchau.js"></script><script src="drug-online.js"></script><script src="drug-web.js"></script>
+<script>
+(function(){
+'use strict';
+const BCCT_KNOWN_DBS=['bcct_longchau_offline_v4','bcct_drug_image_cache_v1'];
+function snapshot(){const o={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);o[k]=localStorage.getItem(k)}return o}
+function bytesToBase64(bytes){let s='';const step=0x8000;for(let i=0;i<bytes.length;i+=step)s+=String.fromCharCode(...bytes.subarray(i,i+step));return btoa(s)}
+function base64ToBytes(text){const s=atob(String(text||''));const out=new Uint8Array(s.length);for(let i=0;i<s.length;i++)out[i]=s.charCodeAt(i);return out}
+async function packValue(v,stats){
+ if(v===null||v===undefined||typeof v==='string'||typeof v==='number'||typeof v==='boolean')return v;
+ if(typeof v==='bigint')return{$bcct:'BigInt',data:String(v)};
+ if(v instanceof Date)return{$bcct:'Date',data:v.toISOString()};
+ if(typeof Blob!=='undefined'&&v instanceof Blob){const b=new Uint8Array(await v.arrayBuffer());stats.blobCount++;stats.blobBytes+=b.byteLength;return{$bcct:'Blob',type:v.type||'',data:bytesToBase64(b)}}
+ if(v instanceof ArrayBuffer)return{$bcct:'ArrayBuffer',data:bytesToBase64(new Uint8Array(v))};
+ if(ArrayBuffer.isView(v)){const b=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);return{$bcct:'TypedArray',ctor:v.constructor&&v.constructor.name||'Uint8Array',data:bytesToBase64(b)}}
+ if(Array.isArray(v)){const a=[];for(const x of v)a.push(await packValue(x,stats));return a}
+ if(typeof v==='object'){const o={};for(const [k,x] of Object.entries(v)){if(typeof x==='function'||typeof x==='undefined')continue;o[k]=await packValue(x,stats)}return o}
+ return String(v)
+}
+function unpackValue(v){
+ if(!v||typeof v!=='object')return v;
+ if(Array.isArray(v))return v.map(unpackValue);
+ if(v.$bcct==='Blob')return new Blob([base64ToBytes(v.data)],{type:v.type||'application/octet-stream'});
+ if(v.$bcct==='ArrayBuffer')return base64ToBytes(v.data).buffer;
+ if(v.$bcct==='Date')return new Date(v.data);
+ if(v.$bcct==='BigInt'){try{return BigInt(v.data)}catch(_e){return v.data}}
+ if(v.$bcct==='TypedArray'){const b=base64ToBytes(v.data),C=window[v.ctor];try{return typeof C==='function'?new C(b.buffer):b}catch(_e){return b}}
+ const o={};for(const [k,x] of Object.entries(v))o[k]=unpackValue(x);return o
+}
+function rawStore(db,name){return new Promise((resolve,reject)=>{try{const tx=db.transaction(name,'readonly'),os=tx.objectStore(name),rows=[];const r=os.openCursor();r.onsuccess=()=>{const c=r.result;if(!c){resolve(rows);return}rows.push({key:c.primaryKey,value:c.value});c.continue()};r.onerror=()=>reject(r.error);tx.onerror=()=>reject(tx.error)}catch(e){reject(e)}})}
+function openDb(name){return new Promise((resolve,reject)=>{try{let created=false;const r=indexedDB.open(name);r.onupgradeneeded=()=>{created=true;try{r.transaction.abort()}catch(_e){}};r.onsuccess=()=>resolve(r.result);r.onerror=()=>{if(created&&r.error&&r.error.name==='AbortError')resolve(null);else reject(r.error||new Error('Không mở được CSDL '+name))};r.onblocked=()=>reject(new Error('CSDL '+name+' đang bị khóa'))}catch(e){reject(e)}})}
+async function existingDbNames(){const out=new Set();try{if(indexedDB.databases){const a=await indexedDB.databases();for(const x of a||[])if(x&&x.name&&String(x.name).startsWith('bcct_'))out.add(String(x.name))}}catch(_e){}for(const n of BCCT_KNOWN_DBS)out.add(n);return [...out]}
+async function exportDb(name,stats){
+ let db=null;try{db=await openDb(name)}catch(_e){return null}
+ try{
+  const stores=[];
+  for(const storeName of Array.from(db.objectStoreNames)){
+   const tx=db.transaction(storeName,'readonly'),os=tx.objectStore(storeName),indexes=[];
+   for(const idxName of Array.from(os.indexNames)){const idx=os.index(idxName);indexes.push({name:idx.name,keyPath:idx.keyPath,unique:idx.unique,multiEntry:idx.multiEntry})}
+   const schema={name:storeName,keyPath:os.keyPath,autoIncrement:os.autoIncrement,indexes};
+   const raw=await rawStore(db,storeName),records=[];
+   for(const row of raw){records.push({key:await packValue(row.key,stats),value:await packValue(row.value,stats)});stats.records++}
+   stores.push({...schema,records});
+  }
+  return{name,version:db.version||1,stores}
+ }finally{try{db.close()}catch(_e){}}
+}
+async function exportIndexedDb(){
+ const stats={databases:0,records:0,blobCount:0,blobBytes:0},databases=[];
+ for(const name of await existingDbNames()){const x=await exportDb(name,stats);if(x){databases.push(x);stats.databases++}}
+ return{format:'BCCT_INDEXEDDB_FULL_V1',databases,stats}
+}
+function createDb(spec){return new Promise((resolve,reject)=>{try{const r=indexedDB.open(spec.name,Math.max(1,Number(spec.version)||1));r.onupgradeneeded=()=>{const db=r.result;for(const s of spec.stores||[]){let os;if(!db.objectStoreNames.contains(s.name)){const opt={autoIncrement:!!s.autoIncrement};if(s.keyPath!=null)opt.keyPath=s.keyPath;os=db.createObjectStore(s.name,opt)}else os=r.transaction.objectStore(s.name);for(const ix of s.indexes||[])if(ix&&ix.name&&!os.indexNames.contains(ix.name))try{os.createIndex(ix.name,ix.keyPath,{unique:!!ix.unique,multiEntry:!!ix.multiEntry})}catch(_e){}}};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.onblocked=()=>reject(new Error('CSDL '+spec.name+' đang bị khóa'))}catch(e){reject(e)}})}
+function clearStore(db,name){return new Promise((resolve,reject)=>{try{const tx=db.transaction(name,'readwrite'),r=tx.objectStore(name).clear();r.onerror=()=>reject(r.error);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)}catch(e){reject(e)}})}
+function writeStore(db,spec,records){return new Promise((resolve,reject)=>{try{const tx=db.transaction(spec.name,'readwrite'),os=tx.objectStore(spec.name);for(const row of records){const value=unpackValue(row.value),key=unpackValue(row.key);if(spec.keyPath==null){if((key===undefined||key===null)&&spec.autoIncrement)os.put(value);else os.put(value,key)}else os.put(value)}tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Ghi CSDL bị hủy'))}catch(e){reject(e)}})}
+async function importIndexedDb(payload){
+ if(!payload||payload.format!=='BCCT_INDEXEDDB_FULL_V1'||!Array.isArray(payload.databases))return{databases:0,records:0,blobCount:0,blobBytes:0};
+ const stats={databases:0,records:0,blobCount:Number(payload.stats&&payload.stats.blobCount||0),blobBytes:Number(payload.stats&&payload.stats.blobBytes||0)};
+ for(const spec of payload.databases){if(!spec||!spec.name)continue;const db=await createDb(spec);try{for(const n of Array.from(db.objectStoreNames))await clearStore(db,n);for(const s of spec.stores||[]){if(!db.objectStoreNames.contains(s.name))throw new Error('Thiếu kho '+s.name+' trong '+spec.name);await writeStore(db,s,s.records||[]);stats.records+=(s.records||[]).length}stats.databases++}finally{try{db.close()}catch(_e){}}}
+ return stats
+}
+addEventListener('message',async e=>{
+ const m=e.data;if(!m||m.type!=='BCCT_SYNC'||!m.requestId)return;
+ try{
+  let idb=null,idbStats=null;
+  if(m.action==='import'){
+   localStorage.clear();for(const [k,v] of Object.entries(m.storage||{}))localStorage.setItem(k,String(v));
+   if(m.indexedDB){idbStats=await importIndexedDb(m.indexedDB)}
+  }else if(m.action==='merge'){
+   for(const k of (m.removeKeys||[]))localStorage.removeItem(k);for(const [k,v] of Object.entries(m.storage||{}))localStorage.setItem(k,String(v));
+  }
+  if(m.action==='export'){idb=await exportIndexedDb();idbStats=idb.stats}
+  e.source.postMessage({type:'BCCT_SYNC_RESULT',requestId:m.requestId,ok:true,storage:snapshot(),indexedDB:idb,indexedDBStats:idbStats},'*')
+ }catch(err){e.source.postMessage({type:'BCCT_SYNC_RESULT',requestId:m.requestId,ok:false,error:String(err&&err.message||err)},'*')}
+})
+})();
+</script></body></html>

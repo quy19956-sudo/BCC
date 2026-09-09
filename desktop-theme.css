@@ -1,0 +1,296 @@
+/*
+ * BCCT Desktop Responsive Layer
+ * Chỉ kích hoạt từ 900px trở lên. Giao diện điện thoại hiện tại được giữ nguyên.
+ */
+
+@media (min-width: 900px) {
+  html { scroll-behavior:smooth; }
+  body {
+    --bcct-desktop-max: 1320px;
+    --bcct-desktop-gap: 18px;
+  }
+
+  /* Kích thước điều khiển phù hợp chuột/bàn phím hơn, không còn cảm giác phóng to kiểu điện thoại. */
+  input, select, textarea, button, .btn {
+    font-size:15px !important;
+  }
+  input, select, textarea {
+    min-height:44px !important;
+  }
+  button, .btn {
+    min-height:42px;
+    cursor:pointer;
+  }
+  button:focus-visible, .btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible,
+  summary:focus-visible, a:focus-visible {
+    outline:3px solid rgba(255,255,255,.95) !important;
+    outline-offset:3px !important;
+  }
+
+  /* Khung công cụ rộng hơn trên desktop. */
+  body:not(.bcct-page-index) {
+    padding:20px 24px 34px !important;
+  }
+  body:not(.bcct-page-index) > .wrap,
+  body:not(.bcct-page-index) > main.wrap,
+  body:not(.bcct-page-index) > .app,
+  body:not(.bcct-page-index) .wrap {
+    width:min(100%, var(--bcct-desktop-max)) !important;
+    max-width:var(--bcct-desktop-max) !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .card, .panel, .section, .tableCard, .history-card, .person-card, .segment {
+    border-radius:22px !important;
+  }
+  .card, .panel { padding:18px !important; }
+  .grid2 { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
+  .grid3 { grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:14px !important; }
+  .toolbar { grid-template-columns:repeat(4,minmax(0,1fr)) !important; gap:10px !important; }
+  .modal { width:min(980px,calc(100vw - 64px)) !important; max-width:980px !important; }
+  .camera-box canvas, .camera-box video { max-height:620px !important; }
+
+  /* ===== Trang chính ===== */
+  body.bcct-page-index { padding:0 !important; }
+  body.bcct-page-index .top {
+    height:72px !important;
+    padding:0 30px !important;
+    gap:16px !important;
+  }
+  body.bcct-page-index .top:after {
+    content:"GIAO DIỆN MÁY TÍNH";
+    margin-left:auto;
+    padding:7px 12px;
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:999px;
+    background:rgba(255,255,255,.14);
+    color:#fff;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.8px;
+    white-space:nowrap;
+  }
+  body.bcct-page-index .title { font-size:20px !important; }
+  body.bcct-page-index .back {
+    min-width:138px !important;
+    height:44px !important;
+    padding:0 16px !important;
+    border-radius:14px !important;
+  }
+  body.bcct-page-index .shell {
+    width:min(100%,1500px) !important;
+    max-width:1500px !important;
+    height:calc(100vh - 72px) !important;
+    padding:26px 30px 38px !important;
+    margin:0 auto !important;
+  }
+  body.bcct-page-index .simple-hero {
+    min-height:112px !important;
+    margin-bottom:22px !important;
+    padding:20px 28px !important;
+  }
+  body.bcct-page-index .simple-hero .heroTop {
+    flex-direction:row !important;
+    justify-content:space-between !important;
+    text-align:left !important;
+  }
+  body.bcct-page-index .simple-hero .heroTop > h1 {
+    width:auto !important;
+    text-align:left !important;
+    font-size:32px !important;
+  }
+  body.bcct-page-index .grid {
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:18px !important;
+    padding:2px !important;
+  }
+  body.bcct-page-index .card,
+  body.bcct-page-index .card.wide {
+    grid-column:auto !important;
+    min-height:146px !important;
+    padding:18px 16px !important;
+    border-radius:24px !important;
+  }
+  body.bcct-page-index .card.wide:first-child { grid-column:span 2 !important; }
+  body.bcct-page-index .card .ico {
+    width:58px !important;
+    height:58px !important;
+    font-size:30px !important;
+  }
+  body.bcct-page-index .card b { font-size:16px !important; }
+  body.bcct-page-index .section {
+    margin-top:22px !important;
+    padding:20px 22px !important;
+  }
+  body.bcct-page-index .note { margin-top:20px !important; }
+  body.bcct-page-index .frame {
+    position:fixed !important;
+    left:0 !important;
+    top:72px !important;
+    width:100vw !important;
+    height:calc(100vh - 72px) !important;
+  }
+  body.bcct-page-index .modalWrap { align-items:center !important; padding:30px !important; }
+  body.bcct-page-index .historyList { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+
+  /* ===== Các công cụ lâm sàng đơn giản ===== */
+  body.bcct-page-insulin .wrap {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-insulin .wrap > .head,
+  body.bcct-page-insulin .wrap > .owner { grid-column:1/-1; }
+  body.bcct-page-insulin .panel { margin:0 !important; min-height:100%; }
+
+  body.bcct-page-ldl .wrap,
+  body.bcct-page-egfr .wrap,
+  body.bcct-page-bmi .wrap {
+    max-width:900px !important;
+  }
+  body.bcct-page-ldl .panel,
+  body.bcct-page-egfr .panel,
+  body.bcct-page-bmi .card {
+    padding:24px !important;
+  }
+  body.bcct-page-bmi .head { margin-bottom:18px !important; }
+
+  /* ===== Morse / Braden: 3 nhóm câu hỏi nằm ngang ===== */
+  body.bcct-page-morse .wrap,
+  body.bcct-page-braden .wrap {
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-morse .wrap > .hero,
+  body.bcct-page-morse .wrap > .live-score,
+  body.bcct-page-morse .wrap > .actions,
+  body.bcct-page-morse .wrap > .result,
+  body.bcct-page-morse .wrap > .owner,
+  body.bcct-page-braden .wrap > .hero,
+  body.bcct-page-braden .wrap > .live-score,
+  body.bcct-page-braden .wrap > .actions,
+  body.bcct-page-braden .wrap > .result,
+  body.bcct-page-braden .wrap > .owner { grid-column:1/-1; }
+  body.bcct-page-morse .wrap > .card,
+  body.bcct-page-braden .wrap > .card { margin:0 !important; height:100%; }
+  body.bcct-page-morse .actions,
+  body.bcct-page-braden .actions { grid-template-columns:repeat(2,minmax(0,260px)) !important; justify-content:center; }
+
+  /* ===== NEWS2: 3 khối nhập cùng hàng ===== */
+  body.bcct-page-news2 .wrap {
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-news2 .wrap > h1,
+  body.bcct-page-news2 .wrap > .sub,
+  body.bcct-page-news2 .wrap > .news-live,
+  body.bcct-page-news2 .wrap > .actions,
+  body.bcct-page-news2 .wrap > .result { grid-column:1/-1; }
+  body.bcct-page-news2 .wrap > .card { margin:0 !important; height:100%; }
+  body.bcct-page-news2 + .tmq-owner-footer { max-width:var(--bcct-desktop-max) !important; }
+
+  /* ===== Truyền dịch / bơm tiêm điện ===== */
+  body.bcct-page-truyen-dich .wrap,
+  body.bcct-page-bom-tiem-dien .wrap {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-truyen-dich .wrap > .hero,
+  body.bcct-page-truyen-dich .wrap > .owner,
+  body.bcct-page-bom-tiem-dien .wrap > .hero,
+  body.bcct-page-bom-tiem-dien .wrap > .owner { grid-column:1/-1; }
+  body.bcct-page-truyen-dich .wrap > .card,
+  body.bcct-page-bom-tiem-dien .wrap > .card { margin:0 !important; height:100%; }
+
+  /* ===== Tra thuốc: tìm kiếm và tải offline ở 2 cột, kết quả dùng toàn chiều rộng ===== */
+  body.bcct-page-drug-lookup .wrap {
+    display:grid !important;
+    grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-drug-lookup .wrap > .card { margin:0 !important; }
+  body.bcct-page-drug-lookup #result,
+  body.bcct-page-drug-lookup .owner { grid-column:1/-1; }
+  body.bcct-page-drug-lookup #clinicalBlocks {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+  body.bcct-page-drug-lookup #clinicalBlocks > * { margin-top:0 !important; }
+  body.bcct-page-drug-lookup .product-gallery { grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
+
+  /* ===== QR CCCD/BHYT ===== */
+  body.bcct-page-bhyt-qr .wrap {
+    display:grid !important;
+    grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);
+    gap:18px;
+    align-items:start;
+  }
+  body.bcct-page-bhyt-qr .wrap > .card { margin:0 !important; }
+  body.bcct-page-bhyt-qr #person,
+  body.bcct-page-bhyt-qr .owner { grid-column:1/-1; }
+  body.bcct-page-bhyt-qr .person-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+
+  /* ===== Kiểm tra thủ thuật: ưu tiên bảng rộng và thanh công cụ nhiều cột ===== */
+  body.bcct-page-kiem-tra-thu-thuat-376 .wrap { max-width:1460px !important; }
+  body.bcct-page-kiem-tra-thu-thuat-376 .sourceGrid { grid-template-columns:repeat(4,minmax(0,1fr)) !important; }
+  body.bcct-page-kiem-tra-thu-thuat-376 .toolbar { grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
+  body.bcct-page-kiem-tra-thu-thuat-376 .tableScroll { max-height:calc(100vh - 300px); overflow:auto; }
+  body.bcct-page-kiem-tra-thu-thuat-376 table { min-width:980px; }
+
+  /* ===== ICD-10: tận dụng màn hình rộng, kết quả 2 cột ===== */
+  body.bcct-page-icd10 { padding:0 22px 30px !important; }
+  body.bcct-page-icd10 .app { max-width:1480px !important; }
+  body.bcct-page-icd10 .search-panel { margin-left:24px !important; margin-right:24px !important; padding:18px !important; }
+  body.bcct-page-icd10 .search-panel .filters { gap:9px !important; }
+  body.bcct-page-icd10 .search-input { height:50px !important; font-size:16px !important; }
+  body.bcct-page-icd10 .app > main { padding:18px 24px 36px !important; }
+  body.bcct-page-icd10 #results .section {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px 16px;
+    align-items:start;
+  }
+  body.bcct-page-icd10 #results .section > .section-title,
+  body.bcct-page-icd10 #results .section > .group-banner { grid-column:1/-1; }
+  body.bcct-page-icd10 #results .card { margin:0 !important; height:100%; }
+  body.bcct-page-icd10 .actions { grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+
+  /* Bảng và nội dung dài dễ đọc hơn trên màn hình lớn. */
+  table { font-size:14px; }
+  th, td { padding-left:10px; padding-right:10px; }
+}
+
+/* Laptop nhỏ: 3 cột ở trang chính thay vì ép 4 cột. */
+@media (min-width:900px) and (max-width:1199px) {
+  body.bcct-page-index .grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; }
+  body.bcct-page-index .card.wide:first-child { grid-column:span 2 !important; }
+  body.bcct-page-morse .wrap,
+  body.bcct-page-braden .wrap,
+  body.bcct-page-news2 .wrap { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  body.bcct-page-morse .wrap > .card:last-of-type,
+  body.bcct-page-braden .wrap > .card:last-of-type,
+  body.bcct-page-news2 .wrap > .card:last-of-type { grid-column:1/-1; }
+  body.bcct-page-drug-lookup .wrap,
+  body.bcct-page-bhyt-qr .wrap { grid-template-columns:1fr 1fr; }
+  body.bcct-page-kiem-tra-thu-thuat-376 .sourceGrid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+}
+
+@media (min-width:900px) and (pointer:fine) {
+  button:hover, .btn:hover {
+    transform:translateY(-1px) !important;
+    filter:brightness(1.025) !important;
+  }
+  body.bcct-page-index .card:hover {
+    transform:translateY(-3px) !important;
+    box-shadow:0 22px 34px rgba(3,34,78,.32),0 6px 10px rgba(3,28,68,.20),inset 4px 4px 7px rgba(255,255,255,.90),inset -5px -6px 9px rgba(37,99,165,.20) !important;
+  }
+}
