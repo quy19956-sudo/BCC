@@ -76,7 +76,9 @@ function statusText(s){
  return map[x]||x;
 }
 function globalObj(row){return {search:row[0]||'',name:row[1]||'',ingredient:row[2]||'',strength:row[3]||'',form:row[4]||'',holder:row[5]||'',source:row[6]||'',id:row[7]||'',status:row[8]||'',date:row[9]||'',confidence:row[10]||''}}
+const queryCache=new Map();
 function search(q,limit=45){
+ const ck=norm(q)+'|'+limit;if(queryCache.has(ck))return queryCache.get(ck);
  const n=norm(q),ts=qTerms(q);if(!n||!ts.length)return[];
  const out=[],seen=new Set();
  const add=o=>{const k=norm(o.label||o.rawLabel)+'|'+norm(o.ingredient||o.target||'')+'|'+norm(o.strength||'')+'|'+norm(o.form||'');if(!seen.has(k)){seen.add(k);out.push(o)}};
@@ -96,7 +98,7 @@ function search(q,limit=45){
   }
  }
  for(let i=0;i<GLOBAL.length;i++){
-  const row=GLOBAL[i],g=globalObj(row);if(!allIn(g.search,ts))continue;
+  const row=GLOBAL[i];if(!allIn(row[0]||'',ts))continue;const g=globalObj(row);
   const r=rankText(g.name+' '+g.strength+' '+g.form,g.ingredient,g.search,n,ts);
   if(r<99){
    const bits=[];if(g.ingredient)bits.push(viLabel(g.ingredient));if(g.strength)bits.push(viLabel(g.strength));bits.push(sourceText(g.source));
@@ -109,7 +111,7 @@ function search(q,limit=45){
   if(r<99){const d=resolveClinical(raw);add({kind:'rx',label:shown,rawLabel:raw,target:d?d.name:raw,ingredient:d?(d.ingredient||d.name):(row[1]==='IN'?raw:''),d,rxType:String(row[1]||''),rxcui:String(row[0]||''),sub:typeText(String(row[1]||''))+' • RxNorm ngoại tuyến',r:r+(d?0.6:1.2),sp:3})}
  }
  out.sort((a,b)=>a.r-b.r||a.sp-b.sp||a.label.length-b.label.length||a.label.localeCompare(b.label,'vi'));
- return out.slice(0,limit);
+ const result=out.slice(0,limit);if(queryCache.size>=30)queryCache.delete(queryCache.keys().next().value);queryCache.set(ck,result);return result;
 }
 function hideResult(){const r=$('result');if(r)r.classList.add('hidden');for(const id of ['drugName','aliases'])if($(id))$(id).textContent='';for(const id of ['sourceBadge','clinicalBlocks','productMeta','productImages'])if($(id))$(id).innerHTML='';if($('productImages'))$('productImages').classList.add('hidden')}
 function cachedCoverFor(m){if(!LONGCHAU||!LONGCHAU.getSavedCover)return null;return LONGCHAU.getSavedCover((m&&m.rawLabel)||(m&&m.label)||(m&&m.target)||'')||LONGCHAU.getSavedCover((m&&m.ingredient)||(m&&m.target)||'')}
@@ -161,7 +163,7 @@ function curatedSourcesHtml(d){
  const list=(d&&d.sources)||[];if(!list.length)return'';
  return '<article class="result clinical"><h3>🔗 Nguồn tham khảo</h3><div class="web-sources">'+list.map((x,i)=>{const u=String(x.url||'');if(!/^https?:\/\//i.test(u))return'';let host='';try{host=new URL(u).hostname}catch(_e){}return '<a class="web-source" href="'+esc(u)+'" target="_blank" rel="noopener"><b>'+(i+1)+'. '+esc(x.name||host||'Nguồn')+'</b><small>'+esc(host||u)+'</small></a>'}).join('')+'</div></article>';
 }
-async function renderProductImages(record,opt){const box=$('productImages');if(!box)return false;const label=String(opt&&opt.label||record&&record.name||'thuốc này');const urls=(IMG&&IMG.uniq?IMG.uniq([...(record&&record.imageUrls||[]),record&&record.productMeta&&record.productMeta.image]):[...(record&&record.imageUrls||[])]).slice(0,1);let rows=((record&&record._displayImages)||[]).slice(0,1);if(!rows.length&&IMG&&urls.length){try{rows=await IMG.resolve(urls,1)}catch(_e){rows=[]}}if(!rows.length)rows=urls.slice(0,1).map(src=>({src,offline:false}));if(!rows.length){showImageMissing(label);return false}box.classList.remove('hidden');const x=rows[0],src=x.src||x.original||'';box.innerHTML='<div class="image-shell"><img loading="eager" alt="Ảnh '+esc(label)+'" src="'+esc(src)+'"><div class="image-caption">Một ảnh đại diện đã được lưu để dùng ngoại tuyến.</div></div>';const im=box.querySelector('img');if(im)im.onerror=()=>showImageMissing(label);return true}
+async function renderProductImages(record,opt){const box=$('productImages');if(!box)return false;const label=String(opt&&opt.label||record&&record.name||'thuốc này');const urls=(IMG&&IMG.uniq?IMG.uniq([...(record&&record.imageUrls||[]),record&&record.productMeta&&record.productMeta.image]):[...(record&&record.imageUrls||[])]).slice(0,1);let rows=((record&&record._displayImages)||[]).slice(0,1);if(!rows.length&&IMG&&urls.length){try{rows=await IMG.resolve(urls,1)}catch(_e){rows=[]}}if(!rows.length)rows=urls.slice(0,1).map(src=>({src,offline:false}));if(!rows.length){showImageMissing(label);return false}box.classList.remove('hidden');const x=rows[0],src=x.src||x.original||'';box.innerHTML='<div class="image-shell"><img loading="eager" alt="Ảnh '+esc(label)+'" src="'+esc(src)+'"><div class="image-caption">Một ảnh đại diện đã được lưu để dùng ngoại tuyến.</div></div>';const im=box.querySelector('img');if(im)im.onerror=()=>showImageMissing(label);if(IMG&&IMG.releaseUnused)IMG.releaseUnused();return true}
 function showWebData(data){
  if(!data||!data.record)return;const d=data.record,q=data.query||d.name||'';
  $('drugInput').value=d.name||q;$('suggestions').innerHTML='';clear('message');$('result').classList.remove('hidden');
@@ -170,7 +172,7 @@ function showWebData(data){
  const lc=!!(data.longChau||d.longChau);
  $('sourceBadge').innerHTML=data.cached?'<span class="tag ok">Đã lưu ngoại tuyến</span>':(lc?'<span class="tag ok">Dữ liệu Long Châu • đã lưu ngoại tuyến</span>':'<span class="tag ok">Đã tìm và lưu trên máy</span>');
  const pm={...(d.productMeta||{}),ingredient:d.ingredient||(d.productMeta&&d.productMeta.ingredient)||'',source:(d.productMeta&&d.productMeta.source)||(lc?'Nhà thuốc Long Châu':d.category||'Nguồn web')};
- $('productMeta').innerHTML=metaRows(pm);rememberImageTarget(d.name||q,d.ingredient||pm.ingredient||'');const hasImg=!!((d.imageUrls&&d.imageUrls.length)||(d.productMeta&&d.productMeta.image));if(hasImg)renderProductImages(d,{label:d.name||q});else loadOneCoverForCurrent({rawLabel:d.name||q,ingredient:d.ingredient||pm.ingredient||''},d,pm);
+ $('productMeta').innerHTML=metaRows(pm);rememberImageTarget(d.name||q,d.ingredient||pm.ingredient||'');const hasImg=!!((d.imageUrls&&d.imageUrls.length)||(d.productMeta&&d.productMeta.image));if(hasImg)renderProductImages(d,{label:d.name||q});else if(!data.offlineOnly)loadOneCoverForCurrent({rawLabel:d.name||q,ingredient:d.ingredient||pm.ingredient||''},d,pm);else showImageMissing(d.name||q);
  const cov=d.coverage||{filled:0,total:9,missing:[]};
  $('clinicalBlocks').innerHTML=blocks(d)+webSourcesHtml(data);
  $('resultNotice').innerHTML='<b>Giá tham khảo:</b> lấy tại thời điểm đồng bộ và có thể thay đổi theo khu vực hoặc khuyến mãi. Đối chiếu đúng hoạt chất, hàm lượng và dạng dùng trước khi sử dụng.';
@@ -326,8 +328,9 @@ if(VNDB){
  addEventListener('bcct-vn-drug-progress',e=>{updateSyncUi(e.detail||{});if(e.detail&&e.detail.state==='ready'){VNDATA=VNDB.getAll();const v=$('drugInput').value;if(norm(v).length>=2)render(v)}});
  if($('vnSyncBtn'))$('vnSyncBtn').onclick=()=>VNDB.sync(true).catch(err=>stat('message','Không tải được danh mục Việt Nam: '+String(err&&err.message||err),'err'));
 }else if($('vnSyncBtn'))$('vnSyncBtn').style.display='none';
-dataSyncUi({hide:true});if($('imageSyncBtn'))$('imageSyncBtn').onclick=()=>runImageBackfill(true);if(LONGCHAU&&!BCCT_SYNC_MODE)setTimeout(()=>runImageBackfill(false),900);else imageSyncUi({running:false,total:1,done:0,text:'Không có bộ đồng bộ ảnh',current:'',error:true});
+dataSyncUi({hide:true});if($('imageSyncBtn'))$('imageSyncBtn').onclick=()=>runImageBackfill(true);imageSyncUi({running:false,total:0,done:0,text:'Ảnh được tải cùng hồ sơ thuốc',current:'Có thể bấm Đồng bộ ảnh để tải riêng.'});
 const q=new URLSearchParams(location.search).get('q');
 if(q){$('drugInput').value=viLabel(q);const x=search(q),best=x[0];if(LONGCHAU)runLongChauSearch(q,false,best||null);else if(best)show(best);else if(ONLINE)runWebSearch(q,true,false,null)}
+window.BCCT_SHOW_SAVED_DRUG=row=>{webSeq++;coverSeq++;clearTimeout(webTimer);showWebData({query:row.record.name,record:row.record,cached:true,longChau:true,offlineOnly:true});};
 window.BCCT_RUN_WEB_DRUG=(q,fresh)=>runWebSearch(q||$('drugInput').value,true,!!fresh);
 })();

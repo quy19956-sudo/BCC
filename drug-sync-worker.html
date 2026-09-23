@@ -1,0 +1,5 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Tải dữ liệu thuốc nền</title></head><body>
+<script src="drug-image-cache.js"></script><script src="drug-longchau.js"></script>
+<script src="drug-sync-engine.js"></script><script>
+if(window.DrugWorker) BCCT_DRUG_SYNC.run().catch(function(e){DrugWorker.finish('error','Chưa tải xong: '+String(e.message||e));});
+</script></body></html>

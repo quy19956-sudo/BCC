@@ -1,0 +1,9 @@
+.weekly-sync{font-size:12px;line-height:1.5;border-top:3px solid #000080!important}
+.weekly-title{background:#000080;color:white;padding:6px 9px;font-weight:700;font-size:15px;margin:-3px -3px 9px}
+.weekly-sync p{margin:7px 0}.weekly-actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.weekly-sync button{min-height:40px;white-space:normal;padding:8px 13px;font-size:12px}
+#weeklyStart{font-weight:bold;color:#000080}#weeklyProgress{width:100%;height:18px;accent-color:#000080;margin:7px 0}
+#weeklyStatus{font-weight:bold;overflow-wrap:anywhere}#weeklyStatus[data-state=error],#weeklyStatus[data-state=partial]{color:#9b2617}
+#weeklyCounts,#weeklyNext,#weeklyLast{margin-top:5px;color:#30363e;font-size:11px;overflow-wrap:anywhere}
+.weekly-sync details{margin-top:10px}.weekly-sync summary{cursor:pointer;text-decoration:underline}
+#weeklySavedResults:empty{display:none}#weeklySavedResults .suggestion{border-left:4px solid #176b38}

@@ -1,0 +1,7 @@
+button,a,input,select,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #000080!important;outline-offset:2px}
+[hidden]{display:none!important}.bcct-background *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+input,select,textarea{max-width:100%;scroll-margin-bottom:90px}button:disabled{cursor:default;opacity:.6}
+.lipid-note{font-size:12px;line-height:1.5;padding:10px;border:1px solid #9b2617;background:#fff7db;color:#6d1b13;margin:10px 0}
+.lipid-actions{display:flex;gap:10px}.lipid-actions .action{flex:1}.lipid-actions .reset{padding:10px 16px}
